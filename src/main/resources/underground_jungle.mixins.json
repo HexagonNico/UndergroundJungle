@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "io.github.hexagonnico.undergroundjungle.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "minVersion": "0.8",
+  "refmap": "undergroundjungle.refmap.json",
+  "mixins": [
+    "OverworldBiomeBuilderMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
