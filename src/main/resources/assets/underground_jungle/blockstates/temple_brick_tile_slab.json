@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "underground_jungle:block/temple_brick_tile_slab"
+    },
+    "type=double": {
+      "model": "underground_jungle:block/temple_brick_tiles"
+    },
+    "type=top": {
+      "model": "underground_jungle:block/temple_brick_tile_slab_top"
+    }
+  }
+}

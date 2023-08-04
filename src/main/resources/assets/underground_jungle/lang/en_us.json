@@ -1,3 +1,14 @@
 {
-  "block.underground_jungle.jungle_grass": "Jungle Grass"
+  "block.underground_jungle.jungle_grass": "Jungle Grass",
+  "block.underground_jungle.temple_bricks": "Temple Bricks",
+  "block.underground_jungle.cracked_temple_bricks": "Cracked Temple Bricks",
+  "block.underground_jungle.mossy_temple_bricks": "Mossy Temple Bricks",
+  "block.underground_jungle.chiseled_temple_bricks": "Chiseled Temple Bricks",
+  "block.underground_jungle.temple_brick_tiles": "Temple Brick Tiles",
+  "block.underground_jungle.temple_brick_stairs": "Temple Brick Stairs",
+  "block.underground_jungle.temple_brick_slab": "Temple Brick Slab",
+  "block.underground_jungle.temple_brick_wall": "Temple Brick Wall",
+  "block.underground_jungle.temple_brick_tile_stairs": "Temple Brick Tile Stairs",
+  "block.underground_jungle.temple_brick_tile_slab": "Temple Brick Tile Slab",
+  "block.underground_jungle.temple_brick_tile_wall": "Temple Brick Tile Wall"
 }

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "underground_jungle:block/temple_brick_tiles"
+  }
+}

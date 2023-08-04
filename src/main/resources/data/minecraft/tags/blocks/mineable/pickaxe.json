@@ -1,0 +1,16 @@
+{
+  "replace": false,
+  "values": [
+    "underground_jungle:temple_bricks",
+    "underground_jungle:cracked_temple_bricks",
+    "underground_jungle:mossy_temple_bricks",
+    "underground_jungle:chiseled_temple_bricks",
+    "underground_jungle:temple_brick_tiles",
+    "underground_jungle:temple_brick_stairs",
+    "underground_jungle:temple_brick_slab",
+    "underground_jungle:temple_brick_wall",
+    "underground_jungle:temple_brick_tile_stairs",
+    "underground_jungle:temple_brick_tile_slab",
+    "underground_jungle:temple_brick_tile_wall"
+  ]
+}

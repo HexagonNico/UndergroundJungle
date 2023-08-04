@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "underground_jungle:block/temple_bricks",
+    "side": "underground_jungle:block/temple_bricks",
+    "top": "underground_jungle:block/temple_bricks"
+  }
+}

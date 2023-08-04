@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "mossy_temple_bricks",
+  "ingredients": [
+    {
+      "item": "underground_jungle:temple_bricks"
+    },
+    {
+      "item": "minecraft:vine"
+    }
+  ],
+  "result": {
+    "item": "underground_jungle:mossy_temple_bricks"
+  }
+}

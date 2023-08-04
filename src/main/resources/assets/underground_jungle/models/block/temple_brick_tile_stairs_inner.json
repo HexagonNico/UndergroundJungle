@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "underground_jungle:block/temple_brick_tiles",
+    "side": "underground_jungle:block/temple_brick_tiles",
+    "top": "underground_jungle:block/temple_brick_tiles"
+  }
+}

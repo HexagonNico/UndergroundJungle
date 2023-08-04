@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "underground_jungle:block/chiseled_temple_bricks_1"
+      },
+      {
+        "model": "underground_jungle:block/chiseled_temple_bricks_2"
+      }
+    ]
+  }
+}

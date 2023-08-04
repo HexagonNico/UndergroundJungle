@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "underground_jungle:temple_bricks"
+  },
+  "result": "underground_jungle:chiseled_temple_bricks"
+}
