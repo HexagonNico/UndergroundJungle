@@ -1,6 +1,9 @@
 {
-    "pack": {
-        "description": "Underground Jungle mod resources",
-        "pack_format": 8
-    }
+  "pack": {
+    "description": {
+      "text": "Underground Jungle mod resources"
+    },
+    "forge:server_data_pack_format": 12,
+    "pack_format": 13
+  }
 }

@@ -1,0 +1,9 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#minecraft:is_jungle",
+  "features": [
+    "underground_jungle:ore_coarse_dirt",
+    "underground_jungle:ore_mud"
+  ],
+  "step": "underground_ores"
+}

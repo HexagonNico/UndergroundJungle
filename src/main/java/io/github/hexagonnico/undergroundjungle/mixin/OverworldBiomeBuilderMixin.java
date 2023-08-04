@@ -17,21 +17,21 @@ import java.util.function.Consumer;
 @Mixin(OverworldBiomeBuilder.class)
 public class OverworldBiomeBuilderMixin {
 
-    private static final Climate.ParameterPoint TEST_PARAMETERS = Climate.parameters(
-        Climate.Parameter.span(-1.0F, 1.0F),
-        Climate.Parameter.span(-1.0F, 1.0F),
-        Climate.Parameter.span(0.7F, 1.0F),
-        Climate.Parameter.span(
-            Climate.Parameter.span(-1.0F, -0.78F),
-            Climate.Parameter.span(-0.78F, -0.375F)
-        ),
-        Climate.Parameter.span(0.2F, 0.9F),
-        Climate.Parameter.span(-1.0F, 1.0F),
-        0.0F
-    );
-
-    @Inject(at = @At("RETURN"), method = "addUndergroundBiomes")
-    public void addUndergroundBiomes(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> consumer, CallbackInfo ci) {
-        consumer.accept(Pair.of(TEST_PARAMETERS, UndergroundJungleBiomes.TEST_BIOME.getKey()));
-    }
+//    private static final Climate.ParameterPoint TEST_PARAMETERS = Climate.parameters(
+//        Climate.Parameter.span(-1.0F, 1.0F),
+//        Climate.Parameter.span(-1.0F, 1.0F),
+//        Climate.Parameter.span(0.7F, 1.0F),
+//        Climate.Parameter.span(
+//            Climate.Parameter.span(-1.0F, -0.78F),
+//            Climate.Parameter.span(-0.78F, -0.375F)
+//        ),
+//        Climate.Parameter.span(0.2F, 0.9F),
+//        Climate.Parameter.span(-1.0F, 1.0F),
+//        0.0F
+//    );
+//
+//    @Inject(at = @At("RETURN"), method = "addUndergroundBiomes")
+//    public void addUndergroundBiomes(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> consumer, CallbackInfo ci) {
+//        consumer.accept(Pair.of(TEST_PARAMETERS, UndergroundJungleBiomes.TEST_BIOME.getKey()));
+//    }
 }

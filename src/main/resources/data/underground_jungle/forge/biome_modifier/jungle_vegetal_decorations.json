@@ -1,0 +1,10 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#minecraft:is_jungle",
+  "features": [
+    "underground_jungle:underground_jungle_vegetation",
+    "underground_jungle:vines_extra",
+    "underground_jungle:kelp_underground"
+  ],
+  "step": "vegetal_decoration"
+}

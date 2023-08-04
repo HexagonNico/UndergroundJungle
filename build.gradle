@@ -1,44 +1,26 @@
-buildscript {
-    repositories {
-        maven { url = 'https://maven.minecraftforge.net' }
-        maven { url = "https://files.minecraftforge.net/maven" }
-        maven { url = "https://repo.spongepowered.org/repository/maven-public/" }
-        mavenCentral()
-    }
-    dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: "5.1.+", changing: true
-        classpath group: "org.spongepowered", name: "mixingradle", version: "0.7-SNAPSHOT"
-    }
+plugins {
+    id 'eclipse'
+    id 'maven-publish'
+    id 'net.minecraftforge.gradle' version '5.1.+'
 }
 
-apply plugin: 'net.minecraftforge.gradle'
-apply plugin: 'eclipse'
-apply plugin: 'maven-publish'
-apply plugin: "org.spongepowered.mixin"
-
-mixin {
-    add sourceSets.main, "${mod_id}.refmap.json"
-}
-
-def minecraft_version = '1.19.2'
+def minecraft_version = '1.19.4'
 
 archivesBaseName = "${mod_id}-forge-${minecraft_version}"
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 minecraft {
-    mappings channel: 'official', version: "${minecraft_version}"
+    mappings channel: 'official', version: minecraft_version
 
     runs {
         client {
             workingDirectory project.file('run')
-
             property 'forge.logging.markers', 'REGISTRIES'
-
             property 'forge.logging.console.level', 'debug'
-            arg "-mixin.config=${mod_id}.mixins.json"
+            property 'forge.enabledGameTestNamespaces', mod_id
             mods {
-                underground_jungle {
+                "${mod_id}" {
                     source sourceSets.main
                 }
             }
@@ -52,28 +34,28 @@ repositories {
 
 }
 
+def forge_version = '45.1.0'
+
 dependencies {
-    minecraft "net.minecraftforge:forge:${minecraft_version}-43.2.0"
-    annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 }
 
 jar {
     manifest {
         attributes([
-                "Specification-Title": mod_name,
+                "Specification-Title": mod_id,
                 "Specification-Vendor": mod_author,
                 "Specification-Version": version,
                 "Implementation-Title": mod_name,
                 "Implementation-Version": project.jar.archiveVersion,
                 "Implementation-Vendor": mod_author,
-                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-                "MixinConfigs": "${mod_id}.mixins.json"
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
-    finalizedBy 'reobfJar'
 }
 
 jar.finalizedBy('reobfJar')
+// publish.dependsOn('reobfJar')
 
 publishing {
     publications {
@@ -83,7 +65,11 @@ publishing {
     }
     repositories {
         maven {
-            url "https://maven.minecraftforge.net"
+            url "file://${project.projectDir}/mcmodsrepo"
         }
     }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
 }
