@@ -1,6 +1,7 @@
 package io.github.hexagonnico.undergroundjungle;
 
 import io.github.hexagonnico.undergroundjungle.blocks.MudGrassBlock;
+import io.github.hexagonnico.undergroundjungle.blocks.TempleChestBlock;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -26,6 +27,7 @@ public class UndergroundJungleBlocks {
     public static final RegistryObject<Block> TEMPLE_BRICK_TILE_STAIRS = REGISTER.register("temple_brick_tile_stairs", () -> new StairBlock(() -> TEMPLE_BRICK_TILES.get().defaultBlockState(), BlockBehaviour.Properties.copy(TEMPLE_BRICK_TILES.get())));
     public static final RegistryObject<Block> TEMPLE_BRICK_TILE_SLAB = REGISTER.register("temple_brick_tile_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(TEMPLE_BRICK_TILES.get())));
     public static final RegistryObject<Block> TEMPLE_BRICK_TILE_WALL = REGISTER.register("temple_brick_tile_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(TEMPLE_BRICK_TILES.get())));
+    public static final RegistryObject<Block> TEMPLE_CHEST = REGISTER.register("temple_chest", () -> new TempleChestBlock(BlockBehaviour.Properties.copy(TEMPLE_BRICKS.get()).strength(-1.0F, 3600000.0F).noLootTable()));
 
     public static void register(IEventBus eventBus) {
         REGISTER.register(eventBus);

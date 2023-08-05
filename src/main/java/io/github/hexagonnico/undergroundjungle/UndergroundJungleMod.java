@@ -13,6 +13,7 @@ public class UndergroundJungleMod {
     public UndergroundJungleMod() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
         UndergroundJungleBlocks.register(eventBus);
+        UndergroundJungleBlockEntities.register(eventBus);
         UndergroundJungleItems.register(eventBus);
         UndergroundJungleBiomes.register(eventBus);
         eventBus.register(new UndergroundJungleEvents());

@@ -23,6 +23,7 @@ public class UndergroundJungleItems {
     public static final RegistryObject<BlockItem> TEMPLE_BRICK_TILE_STAIRS = REGISTER.register("temple_brick_tile_stairs", () -> new BlockItem(UndergroundJungleBlocks.TEMPLE_BRICK_TILE_STAIRS.get(), new Item.Properties()));
     public static final RegistryObject<BlockItem> TEMPLE_BRICK_TILE_SLAB = REGISTER.register("temple_brick_tile_slab", () -> new BlockItem(UndergroundJungleBlocks.TEMPLE_BRICK_TILE_SLAB.get(), new Item.Properties()));
     public static final RegistryObject<BlockItem> TEMPLE_BRICK_TILE_WALL = REGISTER.register("temple_brick_tile_wall", () -> new BlockItem(UndergroundJungleBlocks.TEMPLE_BRICK_TILE_WALL.get(), new Item.Properties()));
+    public static final RegistryObject<BlockItem> TEMPLE_CHEST = REGISTER.register("temple_chest", () -> new BlockItem(UndergroundJungleBlocks.TEMPLE_CHEST.get(), new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         REGISTER.register(eventBus);

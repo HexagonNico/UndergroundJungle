@@ -1,6 +1,8 @@
 package io.github.hexagonnico.undergroundjungle;
 
+import io.github.hexagonnico.undergroundjungle.renderers.TempleChestRenderer;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
@@ -24,5 +26,11 @@ public class UndergroundJungleEvents {
         } else if(event.getTab().equals(CreativeModeTabs.NATURAL_BLOCKS)) {
             event.accept(UndergroundJungleItems.JUNGLE_GRASS::get);
         }
+    }
+
+    @SubscribeEvent
+    @SuppressWarnings("unused")
+    public void registerRenders(EntityRenderersEvent.RegisterRenderers event) {
+        event.registerBlockEntityRenderer(UndergroundJungleBlockEntities.TEMPLE_CHEST.get(), TempleChestRenderer::new);
     }
 }
