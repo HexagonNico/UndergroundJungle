@@ -129,7 +129,7 @@ public class TempleChestBlockEntity extends RandomizableContainerBlockEntity imp
     }
 
     public void tryUnlock(Player player, InteractionHand hand) {
-        if(!this.isUnlocked()) {
+        if(!this.unlocked) {
             ItemStack itemInHand = player.getItemInHand(hand);
             if(itemInHand.is(Items.DIAMOND)) {
                 if(!player.isCreative()) {
@@ -139,10 +139,6 @@ public class TempleChestBlockEntity extends RandomizableContainerBlockEntity imp
                 this.setChanged();
             }
         }
-    }
-
-    public boolean isUnlocked() {
-        return this.unlocked;
     }
 
     @Override

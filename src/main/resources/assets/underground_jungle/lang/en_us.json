@@ -10,5 +10,7 @@
   "block.underground_jungle.temple_brick_wall": "Temple Brick Wall",
   "block.underground_jungle.temple_brick_tile_stairs": "Temple Brick Tile Stairs",
   "block.underground_jungle.temple_brick_tile_slab": "Temple Brick Tile Slab",
-  "block.underground_jungle.temple_brick_tile_wall": "Temple Brick Tile Wall"
+  "block.underground_jungle.temple_brick_tile_wall": "Temple Brick Tile Wall",
+  "block.underground_jungle.temple_chest": "Temple Chest",
+  "container.temple_chest": "Temple Chest"
 }

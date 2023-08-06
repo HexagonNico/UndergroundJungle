@@ -70,7 +70,7 @@ public class TempleChestBlock extends AbstractChestBlock<TempleChestBlockEntity>
             MenuProvider menuprovider = this.getMenuProvider(state, world, pos);
             if(menuprovider != null && world.getBlockEntity(pos) instanceof TempleChestBlockEntity blockEntity) {
                 blockEntity.tryUnlock(player, hand);
-                if(blockEntity.isUnlocked()) {
+                if(blockEntity.canOpen(player)) {
                     player.openMenu(menuprovider);
                 }
             }
@@ -114,7 +114,7 @@ public class TempleChestBlock extends AbstractChestBlock<TempleChestBlockEntity>
     @Override
     @SuppressWarnings("deprecation")
     public @NotNull BlockState updateShape(BlockState state1, @NotNull Direction direction, @NotNull BlockState state2, @NotNull LevelAccessor world, @NotNull BlockPos pos1, @NotNull BlockPos pos2) {
-        if (state1.getValue(BlockStateProperties.WATERLOGGED)) {
+        if(state1.getValue(BlockStateProperties.WATERLOGGED)) {
             world.scheduleTick(pos1, Fluids.WATER, Fluids.WATER.getTickDelay(world));
         }
         return super.updateShape(state1, direction, state2, world, pos1, pos2);
@@ -129,9 +129,8 @@ public class TempleChestBlock extends AbstractChestBlock<TempleChestBlockEntity>
     @Override
     @SuppressWarnings("deprecation")
     public void tick(@NotNull BlockState state, ServerLevel world, @NotNull BlockPos pos, @NotNull RandomSource random) {
-        BlockEntity blockentity = world.getBlockEntity(pos);
-        if (blockentity instanceof TempleChestBlockEntity) {
-            ((TempleChestBlockEntity)blockentity).recheckOpen();
+        if(world.getBlockEntity(pos) instanceof TempleChestBlockEntity blockEntity) {
+            blockEntity.recheckOpen();
         }
     }
 }

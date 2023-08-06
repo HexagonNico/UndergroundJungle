@@ -1,11 +1,21 @@
 {
-  "feature": "minecraft:kelp",
+  "feature": "minecraft:trees_jungle",
   "placement": [
     {
-      "type": "minecraft:noise_based_count",
-      "noise_factor": 80.0,
-      "noise_offset": 0.0,
-      "noise_to_count_ratio": 120
+      "type": "minecraft:count",
+      "count": {
+        "type": "minecraft:weighted_list",
+        "distribution": [
+          {
+            "data": 80,
+            "weight": 9
+          },
+          {
+            "data": 81,
+            "weight": 1
+          }
+        ]
+      }
     },
     {
       "type": "minecraft:in_square"
@@ -15,7 +25,7 @@
       "height": {
         "type": "minecraft:uniform",
         "max_inclusive": {
-          "absolute": 64
+          "absolute": 32
         },
         "min_inclusive": {
           "absolute": -54

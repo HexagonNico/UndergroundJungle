@@ -9,21 +9,15 @@
       "entries": [
         {
           "data": {
-            "Name": "minecraft:mud"
+            "Name": "underground_jungle:jungle_grass"
           },
-          "weight": 10
+          "weight": 5
         },
         {
           "data": {
             "Name": "minecraft:moss_block"
           },
           "weight": 1
-        },
-        {
-          "data": {
-            "Name": "underground_jungle:jungle_grass"
-          },
-          "weight": 2
         }
       ]
     },

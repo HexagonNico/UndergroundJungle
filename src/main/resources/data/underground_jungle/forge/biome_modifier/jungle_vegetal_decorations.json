@@ -4,7 +4,7 @@
   "features": [
     "underground_jungle:underground_jungle_vegetation",
     "underground_jungle:vines_extra",
-    "underground_jungle:kelp_underground"
+    "underground_jungle:trees_underground_jungle"
   ],
   "step": "vegetal_decoration"
 }
