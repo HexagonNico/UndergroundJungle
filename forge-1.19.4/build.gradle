@@ -23,6 +23,7 @@ minecraft {
             mods {
                 "${mod_id}" {
                     source sourceSets.main
+                    source project(':common').sourceSets.main
                 }
             }
         }
@@ -39,7 +40,12 @@ def forge_version = '45.1.0'
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    implementation project(':common')
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+}
+
+processResources {
+    from project(":common").sourceSets.main.resources
 }
 
 mixin {
