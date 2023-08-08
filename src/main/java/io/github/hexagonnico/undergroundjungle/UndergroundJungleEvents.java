@@ -25,6 +25,8 @@ public class UndergroundJungleEvents {
             event.accept(UndergroundJungleItems.TEMPLE_BRICK_TILE_WALL::get);
         } else if(event.getTab().equals(CreativeModeTabs.NATURAL_BLOCKS)) {
             event.accept(UndergroundJungleItems.JUNGLE_GRASS::get);
+            event.accept(UndergroundJungleItems.GLOWING_MUSHROOM::get);
+            event.accept(UndergroundJungleItems.GLOWING_MUSHROOM_BLOCK::get);
         } else if(event.getTab().equals(CreativeModeTabs.FUNCTIONAL_BLOCKS)) {
             event.accept(UndergroundJungleItems.TEMPLE_CHEST::get);
         }

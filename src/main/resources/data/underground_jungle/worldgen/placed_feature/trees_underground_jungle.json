@@ -1,5 +1,5 @@
 {
-  "feature": "minecraft:trees_jungle",
+  "feature": "underground_jungle:trees_underground_jungle",
   "placement": [
     {
       "type": "minecraft:count",

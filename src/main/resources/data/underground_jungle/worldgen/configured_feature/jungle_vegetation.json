@@ -8,13 +8,13 @@
           "data": {
             "Name": "minecraft:fern"
           },
-          "weight": 25
+          "weight": 3
         },
         {
           "data": {
             "Name": "minecraft:grass"
           },
-          "weight": 50
+          "weight": 5
         },
         {
           "data": {
@@ -23,7 +23,7 @@
               "half": "lower"
             }
           },
-          "weight": 10
+          "weight": 2
         },
         {
           "data": {
@@ -32,7 +32,19 @@
               "half": "lower"
             }
           },
-          "weight": 5
+          "weight": 2
+        },
+        {
+          "data": {
+            "Name": "minecraft:red_mushroom"
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "minecraft:brown_mushroom"
+          },
+          "weight": 1
         }
       ]
     }

@@ -1,14 +1,22 @@
 package io.github.hexagonnico.undergroundjungle.blocks;
 
 import io.github.hexagonnico.undergroundjungle.UndergroundJungleBlocks;
+import io.github.hexagonnico.undergroundjungle.UndergroundJungleFeatures;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+import net.minecraft.world.level.chunk.ChunkGenerator;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import org.jetbrains.annotations.NotNull;
 
 public class MudGrassBlock extends Block implements BonemealableBlock {
@@ -44,24 +52,26 @@ public class MudGrassBlock extends Block implements BonemealableBlock {
     }
 
     @Override
-    public void performBonemeal(@NotNull ServerLevel world, RandomSource random, @NotNull BlockPos pos, @NotNull BlockState state) {
-        for(int i = 0; i < random.nextInt(16) + 16; i++) {
-            BlockPos nextPos = pos.offset(random.nextInt(10) - 5, random.nextInt(5) - 3, random.nextInt(10) - 5);
-            BlockState stateBelow = world.getBlockState(nextPos.below());
-            if((stateBelow.is(Blocks.MUD) || stateBelow.is(UndergroundJungleBlocks.JUNGLE_GRASS.get())) && world.getBlockState(nextPos).isAir()) {
-                int choice = random.nextInt(4);
-                if(choice == 0) {
-                    world.setBlockAndUpdate(nextPos, Blocks.TALL_GRASS.defaultBlockState());
-                    world.setBlockAndUpdate(nextPos.above(), Blocks.TALL_GRASS.defaultBlockState().setValue(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER));
-                } else if(choice == 1) {
-                    world.setBlockAndUpdate(nextPos, Blocks.LARGE_FERN.defaultBlockState());
-                    world.setBlockAndUpdate(nextPos.above(), Blocks.LARGE_FERN.defaultBlockState().setValue(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER));
-                } else if(choice == 2) {
-                    world.setBlockAndUpdate(nextPos, Blocks.FERN.defaultBlockState());
-                } else {
-                    world.setBlockAndUpdate(nextPos, Blocks.GRASS.defaultBlockState());
+    public void performBonemeal(@NotNull ServerLevel world, @NotNull RandomSource random, @NotNull BlockPos pos, @NotNull BlockState state) {
+        BlockState blockState = world.getBlockState(pos);
+        Registry<ConfiguredFeature<?, ?>> registry = world.registryAccess().registryOrThrow(Registries.CONFIGURED_FEATURE);
+        if(blockState.is(UndergroundJungleBlocks.JUNGLE_GRASS.get())) {
+            for(int x = -3; x <= 3; x++) {
+                for(int y = -1; y <= 1; y++) {
+                    for(int z = -3; z <= 3; z++) {
+                        BlockPos offsetPos = pos.offset(x, y, z);
+                        if(random.nextBoolean() && world.getBlockState(offsetPos).is(BlockTags.DIRT) && world.getBlockState(offsetPos.above()).isAir()) {
+                            this.place(registry, UndergroundJungleFeatures.JUNGLE_VEGETATION, world, random, offsetPos.above());
+                        }
+                    }
                 }
             }
         }
+        // TODO: Else if... is mushroom grass
+    }
+
+    private void place(Registry<ConfiguredFeature<?, ?>> registry, ResourceKey<ConfiguredFeature<?, ?>> resourceKey, ServerLevel world, RandomSource random, BlockPos pos) {
+        ChunkGenerator chunkGenerator = world.getChunkSource().getGenerator();
+        registry.getHolder(resourceKey).ifPresent(feature -> feature.value().place(world, chunkGenerator, random, pos));
     }
 }
