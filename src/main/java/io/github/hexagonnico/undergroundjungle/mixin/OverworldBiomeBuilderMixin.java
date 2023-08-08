@@ -1,8 +1,10 @@
 package io.github.hexagonnico.undergroundjungle.mixin;
 
 import com.mojang.datafixers.util.Pair;
-import io.github.hexagonnico.undergroundjungle.UndergroundJungleBiomes;
+import io.github.hexagonnico.undergroundjungle.UndergroundJungleMod;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Climate;
 import net.minecraft.world.level.biome.OverworldBiomeBuilder;
@@ -17,21 +19,18 @@ import java.util.function.Consumer;
 @Mixin(OverworldBiomeBuilder.class)
 public class OverworldBiomeBuilderMixin {
 
-//    private static final Climate.ParameterPoint TEST_PARAMETERS = Climate.parameters(
-//        Climate.Parameter.span(-1.0F, 1.0F),
-//        Climate.Parameter.span(-1.0F, 1.0F),
-//        Climate.Parameter.span(0.7F, 1.0F),
-//        Climate.Parameter.span(
-//            Climate.Parameter.span(-1.0F, -0.78F),
-//            Climate.Parameter.span(-0.78F, -0.375F)
-//        ),
-//        Climate.Parameter.span(0.2F, 0.9F),
-//        Climate.Parameter.span(-1.0F, 1.0F),
-//        0.0F
-//    );
-//
-//    @Inject(at = @At("RETURN"), method = "addUndergroundBiomes")
-//    public void addUndergroundBiomes(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> consumer, CallbackInfo ci) {
-//        consumer.accept(Pair.of(TEST_PARAMETERS, UndergroundJungleBiomes.TEST_BIOME.getKey()));
-//    }
+    @Inject(at = @At("RETURN"), method = "addUndergroundBiomes")
+    public void addUndergroundBiomes(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> consumer, CallbackInfo ci) {
+        ResourceKey<Biome> undergroundJungleKey = ResourceKey.create(Registries.BIOME, new ResourceLocation(UndergroundJungleMod.ID, "underground_jungle"));
+        Climate.ParameterPoint undergroundJungleClimate = Climate.parameters(
+            Climate.Parameter.span(0.4f, 1.0f),
+            Climate.Parameter.span(0.4f, 1.0f),
+            Climate.Parameter.span(0.5f, 1.0f),
+            Climate.Parameter.span(-1.0f, 1.0f),
+            Climate.Parameter.span(0.0f, 0.7f),
+            Climate.Parameter.span(-1.0f, 1.0f),
+            0.0f
+        );
+        consumer.accept(Pair.of(undergroundJungleClimate, undergroundJungleKey));
+    }
 }

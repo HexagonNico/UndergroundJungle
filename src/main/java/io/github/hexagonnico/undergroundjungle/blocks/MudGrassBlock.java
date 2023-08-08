@@ -1,25 +1,29 @@
 package io.github.hexagonnico.undergroundjungle.blocks;
 
 import io.github.hexagonnico.undergroundjungle.UndergroundJungleBlocks;
-import io.github.hexagonnico.undergroundjungle.UndergroundJungleFeatures;
+import io.github.hexagonnico.undergroundjungle.UndergroundJungleMod;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.BonemealableBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.lighting.LayerLightEngine;
 import org.jetbrains.annotations.NotNull;
 
 public class MudGrassBlock extends Block implements BonemealableBlock {
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> JUNGLE_VEGETATION_FEATURE = ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(UndergroundJungleMod.ID, "jungle_vegetation"));
 
     public MudGrassBlock(Properties properties) {
         super(properties);
@@ -33,11 +37,30 @@ public class MudGrassBlock extends Block implements BonemealableBlock {
                 BlockState defaultState = this.defaultBlockState();
                 for(int i = 0; i < 4; i++) {
                     BlockPos nextPos = pos.offset(random.nextInt(3) - 1, random.nextInt(5) - 3, random.nextInt(3) - 1);
-                    if(world.getBlockState(nextPos).is(Blocks.MUD) && world.getBlockState(nextPos.above()).isAir()) {
+                    if(world.getBlockState(nextPos).is(Blocks.MUD) && canPropagate(defaultState, world, nextPos)) {
                         world.setBlockAndUpdate(nextPos, defaultState);
                     }
                 }
             }
+            if(!canBeGrass(currentState, world, pos)) {
+                world.setBlockAndUpdate(pos, Blocks.MUD.defaultBlockState());
+            }
+        }
+    }
+
+    private static boolean canPropagate(BlockState blockState, LevelReader world, BlockPos pos) {
+        return canBeGrass(blockState, world, pos) && !world.getFluidState(pos.above()).is(FluidTags.WATER);
+    }
+
+    private static boolean canBeGrass(BlockState blockState, LevelReader world, BlockPos pos) {
+        BlockPos posAbove = pos.above();
+        BlockState blockStateAbove = world.getBlockState(posAbove);
+        if (blockStateAbove.is(Blocks.SNOW) && blockStateAbove.getValue(SnowLayerBlock.LAYERS) == 1) {
+            return true;
+        } else if (blockStateAbove.getFluidState().getAmount() == 8) {
+            return false;
+        } else {
+            return LayerLightEngine.getLightBlockInto(world, blockState, pos, blockStateAbove, posAbove, Direction.UP, blockStateAbove.getLightBlock(world, posAbove)) < world.getMaxLightLevel();
         }
     }
 
@@ -61,7 +84,7 @@ public class MudGrassBlock extends Block implements BonemealableBlock {
                     for(int z = -3; z <= 3; z++) {
                         BlockPos offsetPos = pos.offset(x, y, z);
                         if(random.nextBoolean() && world.getBlockState(offsetPos).is(BlockTags.DIRT) && world.getBlockState(offsetPos.above()).isAir()) {
-                            this.place(registry, UndergroundJungleFeatures.JUNGLE_VEGETATION, world, random, offsetPos.above());
+                            this.place(registry, JUNGLE_VEGETATION_FEATURE, world, random, offsetPos.above());
                         }
                     }
                 }
