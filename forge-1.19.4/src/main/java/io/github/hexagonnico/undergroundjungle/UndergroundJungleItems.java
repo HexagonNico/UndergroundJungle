@@ -26,6 +26,8 @@ public class UndergroundJungleItems {
     public static final RegistryObject<BlockItem> TEMPLE_CHEST = REGISTER.register("temple_chest", () -> new BlockItem(UndergroundJungleBlocks.TEMPLE_CHEST.get(), new Item.Properties()));
     public static final RegistryObject<BlockItem> GLOWING_MUSHROOM = REGISTER.register("glowing_mushroom", () -> new BlockItem(UndergroundJungleBlocks.GLOWING_MUSHROOM.get(), new Item.Properties()));
     public static final RegistryObject<BlockItem> GLOWING_MUSHROOM_BLOCK = REGISTER.register("glowing_mushroom_block", () -> new BlockItem(UndergroundJungleBlocks.GLOWING_MUSHROOM_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<BlockItem> MUSHROOM_TALL_GRASS = REGISTER.register("mushroom_tall_grass", () -> new BlockItem(UndergroundJungleBlocks.MUSHROOM_TALL_GRASS.get(), new Item.Properties()));
+    public static final RegistryObject<BlockItem> MUSHROOM_GRASS = REGISTER.register("mushroom_grass", () -> new BlockItem(UndergroundJungleBlocks.MUSHROOM_GRASS.get(), new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         REGISTER.register(eventBus);

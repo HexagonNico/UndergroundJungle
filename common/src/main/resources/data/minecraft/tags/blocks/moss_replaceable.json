@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "underground_jungle:jungle_grass"
+    "underground_jungle:jungle_grass",
+    "underground_jungle:mushroom_grass"
   ]
 }

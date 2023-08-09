@@ -1,20 +1,21 @@
 package io.github.hexagonnico.undergroundjungle.blocks;
 
 import io.github.hexagonnico.undergroundjungle.UndergroundJungleBlocks;
-import io.github.hexagonnico.undergroundjungle.UndergroundJungleMod;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.BonemealableBlock;
+import net.minecraft.world.level.block.SnowLayerBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -23,10 +24,11 @@ import org.jetbrains.annotations.NotNull;
 
 public class MudGrassBlock extends Block implements BonemealableBlock {
 
-    public static final ResourceKey<ConfiguredFeature<?, ?>> JUNGLE_VEGETATION_FEATURE = ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(UndergroundJungleMod.ID, "jungle_vegetation"));
+    private final ResourceKey<ConfiguredFeature<?, ?>> bonemealFeature;
 
-    public MudGrassBlock(Properties properties) {
+    public MudGrassBlock(Properties properties, ResourceKey<ConfiguredFeature<?, ?>> bonemealFeature) {
         super(properties);
+        this.bonemealFeature = bonemealFeature;
     }
 
     @Override
@@ -76,25 +78,17 @@ public class MudGrassBlock extends Block implements BonemealableBlock {
 
     @Override
     public void performBonemeal(@NotNull ServerLevel world, @NotNull RandomSource random, @NotNull BlockPos pos, @NotNull BlockState state) {
-        BlockState blockState = world.getBlockState(pos);
         Registry<ConfiguredFeature<?, ?>> registry = world.registryAccess().registryOrThrow(Registries.CONFIGURED_FEATURE);
-        if(blockState.is(UndergroundJungleBlocks.JUNGLE_GRASS.get())) {
-            for(int x = -3; x <= 3; x++) {
-                for(int y = -1; y <= 1; y++) {
-                    for(int z = -3; z <= 3; z++) {
-                        BlockPos offsetPos = pos.offset(x, y, z);
-                        if(random.nextBoolean() && world.getBlockState(offsetPos).is(BlockTags.DIRT) && world.getBlockState(offsetPos.above()).isAir()) {
-                            this.place(registry, JUNGLE_VEGETATION_FEATURE, world, random, offsetPos.above());
-                        }
+        ChunkGenerator chunkGenerator = world.getChunkSource().getGenerator();
+        for(int x = -3; x <= 3; x++) {
+            for(int y = -1; y <= 1; y++) {
+                for(int z = -3; z <= 3; z++) {
+                    BlockPos offsetPos = pos.offset(x, y, z);
+                    if(random.nextBoolean() && world.getBlockState(offsetPos).is(BlockTags.DIRT) && world.getBlockState(offsetPos.above()).isAir()) {
+                        registry.getHolder(this.bonemealFeature).ifPresent(feature -> feature.value().place(world, chunkGenerator, random, offsetPos.above()));
                     }
                 }
             }
         }
-        // TODO: Else if... is mushroom grass
-    }
-
-    private void place(Registry<ConfiguredFeature<?, ?>> registry, ResourceKey<ConfiguredFeature<?, ?>> resourceKey, ServerLevel world, RandomSource random, BlockPos pos) {
-        ChunkGenerator chunkGenerator = world.getChunkSource().getGenerator();
-        registry.getHolder(resourceKey).ifPresent(feature -> feature.value().place(world, chunkGenerator, random, pos));
     }
 }

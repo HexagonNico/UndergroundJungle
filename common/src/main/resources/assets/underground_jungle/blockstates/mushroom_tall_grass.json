@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "underground_jungle:block/mushroom_tall_grass_1"
+      },
+      {
+        "model": "underground_jungle:block/mushroom_tall_grass_2"
+      }
+    ]
+  }
+}
