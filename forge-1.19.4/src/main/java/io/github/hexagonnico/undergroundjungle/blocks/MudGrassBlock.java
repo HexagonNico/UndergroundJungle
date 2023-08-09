@@ -1,11 +1,13 @@
 package io.github.hexagonnico.undergroundjungle.blocks;
 
 import io.github.hexagonnico.undergroundjungle.UndergroundJungleBlocks;
+import io.github.hexagonnico.undergroundjungle.UndergroundJungleMod;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.FluidTags;
@@ -26,9 +28,9 @@ public class MudGrassBlock extends Block implements BonemealableBlock {
 
     private final ResourceKey<ConfiguredFeature<?, ?>> bonemealFeature;
 
-    public MudGrassBlock(Properties properties, ResourceKey<ConfiguredFeature<?, ?>> bonemealFeature) {
+    public MudGrassBlock(Properties properties, String bonemealFeature) {
         super(properties);
-        this.bonemealFeature = bonemealFeature;
+        this.bonemealFeature = ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(UndergroundJungleMod.ID, bonemealFeature));
     }
 
     @Override

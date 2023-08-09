@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "underground_jungle:block/jungle_vines_plant"
+  },
+  "render_type": "cutout"
+}

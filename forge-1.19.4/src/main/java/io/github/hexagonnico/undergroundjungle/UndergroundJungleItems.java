@@ -3,6 +3,7 @@ package io.github.hexagonnico.undergroundjungle;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
@@ -28,6 +29,8 @@ public class UndergroundJungleItems {
     public static final RegistryObject<BlockItem> GLOWING_MUSHROOM_BLOCK = REGISTER.register("glowing_mushroom_block", () -> new BlockItem(UndergroundJungleBlocks.GLOWING_MUSHROOM_BLOCK.get(), new Item.Properties()));
     public static final RegistryObject<BlockItem> MUSHROOM_TALL_GRASS = REGISTER.register("mushroom_tall_grass", () -> new BlockItem(UndergroundJungleBlocks.MUSHROOM_TALL_GRASS.get(), new Item.Properties()));
     public static final RegistryObject<BlockItem> MUSHROOM_GRASS = REGISTER.register("mushroom_grass", () -> new BlockItem(UndergroundJungleBlocks.MUSHROOM_GRASS.get(), new Item.Properties()));
+    public static final RegistryObject<BlockItem> JUNGLE_VINES = REGISTER.register("jungle_vines", () -> new BlockItem(UndergroundJungleBlocks.JUNGLE_VINES.get(), new Item.Properties()));
+    public static final RegistryObject<BlockItem> MUSHROOM_VINES = REGISTER.register("mushroom_vines", () -> new BlockItem(UndergroundJungleBlocks.MUSHROOM_VINES.get(), new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         REGISTER.register(eventBus);

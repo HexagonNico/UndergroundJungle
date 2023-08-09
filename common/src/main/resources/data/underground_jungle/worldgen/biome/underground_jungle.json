@@ -82,7 +82,8 @@
       "minecraft:spore_blossom",
       "underground_jungle:underground_jungle_vegetation",
       "underground_jungle:vines_extra",
-      "underground_jungle:trees_underground_jungle"
+      "underground_jungle:trees_underground_jungle",
+      "underground_jungle:jungle_vines"
     ],
     [
       "minecraft:freeze_top_layer"

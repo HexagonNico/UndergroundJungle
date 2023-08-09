@@ -26,9 +26,11 @@ public class UndergroundJungleEvents {
         } else if(event.getTab().equals(CreativeModeTabs.NATURAL_BLOCKS)) {
             event.accept(UndergroundJungleItems.JUNGLE_GRASS::get);
             event.accept(UndergroundJungleItems.MUSHROOM_GRASS::get);
+            event.accept(UndergroundJungleItems.JUNGLE_VINES::get);
             event.accept(UndergroundJungleItems.GLOWING_MUSHROOM::get);
             event.accept(UndergroundJungleItems.GLOWING_MUSHROOM_BLOCK::get);
             event.accept(UndergroundJungleItems.MUSHROOM_TALL_GRASS::get);
+            event.accept(UndergroundJungleItems.MUSHROOM_VINES::get);
         } else if(event.getTab().equals(CreativeModeTabs.FUNCTIONAL_BLOCKS)) {
             event.accept(UndergroundJungleItems.TEMPLE_CHEST::get);
         }
