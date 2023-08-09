@@ -1,5 +1,5 @@
 {
-  "feature": "underground_jungle:trees_underground_jungle",
+  "feature": "underground_jungle:huge_glowing_mushroom",
   "placement": [
     {
       "type": "minecraft:count",
@@ -7,11 +7,11 @@
         "type": "minecraft:weighted_list",
         "distribution": [
           {
-            "data": 80,
+            "data": 256,
             "weight": 9
           },
           {
-            "data": 81,
+            "data": 128,
             "weight": 1
           }
         ]

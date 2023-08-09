@@ -28,9 +28,20 @@ public class OverworldBiomeBuilderMixin {
             Climate.Parameter.span(0.5f, 1.0f),
             Climate.Parameter.span(-1.0f, 1.0f),
             Climate.Parameter.span(0.0f, 0.7f),
-            Climate.Parameter.span(-1.0f, 1.0f),
+            Climate.Parameter.span(0.0f, 1.0f),
             0.0f
         );
         consumer.accept(Pair.of(undergroundJungleClimate, undergroundJungleKey));
+        ResourceKey<Biome> mushroomCaveKey = ResourceKey.create(Registries.BIOME, new ResourceLocation(UndergroundJungleMod.ID, "mushroom_cave"));
+        Climate.ParameterPoint mushroomCaveClimate = Climate.parameters(
+            Climate.Parameter.span(0.3f, 1.0f),
+            Climate.Parameter.span(0.6f, 1.0f),
+            Climate.Parameter.span(0.0f, 1.0f),
+            Climate.Parameter.span(-1.0f, 1.0f),
+            Climate.Parameter.span(0.0f, 0.7f),
+            Climate.Parameter.span(0.9f, 1.0f),
+            0.0f
+        );
+        consumer.accept(Pair.of(mushroomCaveClimate, mushroomCaveKey));
     }
 }
