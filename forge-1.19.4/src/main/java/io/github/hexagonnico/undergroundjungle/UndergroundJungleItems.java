@@ -1,9 +1,10 @@
 package io.github.hexagonnico.undergroundjungle;
 
+import io.github.hexagonnico.undergroundjungle.blocks.TempleChestBlockEntity;
+import io.github.hexagonnico.undergroundjungle.items.BlockEntityItem;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
@@ -12,6 +13,7 @@ public class UndergroundJungleItems {
 
     private static final DeferredRegister<Item> REGISTER = DeferredRegister.create(Registries.ITEM, UndergroundJungleMod.ID);
 
+    public static final RegistryObject<Item> TEMPLE_KEY = REGISTER.register("temple_key", () -> new Item(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<BlockItem> JUNGLE_GRASS = REGISTER.register("jungle_grass", () -> new BlockItem(UndergroundJungleBlocks.JUNGLE_GRASS.get(), new Item.Properties()));
     public static final RegistryObject<BlockItem> TEMPLE_BRICKS = REGISTER.register("temple_bricks", () -> new BlockItem(UndergroundJungleBlocks.TEMPLE_BRICKS.get(), new Item.Properties()));
     public static final RegistryObject<BlockItem> CRACKED_TEMPLE_BRICKS = REGISTER.register("cracked_temple_bricks", () -> new BlockItem(UndergroundJungleBlocks.CRACKED_TEMPLE_BRICKS.get(), new Item.Properties()));
@@ -24,7 +26,7 @@ public class UndergroundJungleItems {
     public static final RegistryObject<BlockItem> TEMPLE_BRICK_TILE_STAIRS = REGISTER.register("temple_brick_tile_stairs", () -> new BlockItem(UndergroundJungleBlocks.TEMPLE_BRICK_TILE_STAIRS.get(), new Item.Properties()));
     public static final RegistryObject<BlockItem> TEMPLE_BRICK_TILE_SLAB = REGISTER.register("temple_brick_tile_slab", () -> new BlockItem(UndergroundJungleBlocks.TEMPLE_BRICK_TILE_SLAB.get(), new Item.Properties()));
     public static final RegistryObject<BlockItem> TEMPLE_BRICK_TILE_WALL = REGISTER.register("temple_brick_tile_wall", () -> new BlockItem(UndergroundJungleBlocks.TEMPLE_BRICK_TILE_WALL.get(), new Item.Properties()));
-    public static final RegistryObject<BlockItem> TEMPLE_CHEST = REGISTER.register("temple_chest", () -> new BlockItem(UndergroundJungleBlocks.TEMPLE_CHEST.get(), new Item.Properties()));
+    public static final RegistryObject<BlockItem> TEMPLE_CHEST = REGISTER.register("temple_chest", () -> new BlockEntityItem(UndergroundJungleBlocks.TEMPLE_CHEST.get(), TempleChestBlockEntity::new, new Item.Properties()));
     public static final RegistryObject<BlockItem> GLOWING_MUSHROOM = REGISTER.register("glowing_mushroom", () -> new BlockItem(UndergroundJungleBlocks.GLOWING_MUSHROOM.get(), new Item.Properties()));
     public static final RegistryObject<BlockItem> GLOWING_MUSHROOM_BLOCK = REGISTER.register("glowing_mushroom_block", () -> new BlockItem(UndergroundJungleBlocks.GLOWING_MUSHROOM_BLOCK.get(), new Item.Properties()));
     public static final RegistryObject<BlockItem> MUSHROOM_TALL_GRASS = REGISTER.register("mushroom_tall_grass", () -> new BlockItem(UndergroundJungleBlocks.MUSHROOM_TALL_GRASS.get(), new Item.Properties()));

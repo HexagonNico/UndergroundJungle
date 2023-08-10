@@ -1,6 +1,5 @@
 package io.github.hexagonnico.undergroundjungle.blocks;
 
-import io.github.hexagonnico.undergroundjungle.UndergroundJungleBlocks;
 import io.github.hexagonnico.undergroundjungle.UndergroundJungleMod;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

@@ -1,6 +1,7 @@
 package io.github.hexagonnico.undergroundjungle.blocks;
 
 import io.github.hexagonnico.undergroundjungle.UndergroundJungleBlockEntities;
+import io.github.hexagonnico.undergroundjungle.UndergroundJungleItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
@@ -16,7 +17,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ChestMenu;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.ChestLidController;
 import net.minecraft.world.level.block.entity.ContainerOpenersCounter;
@@ -131,7 +131,7 @@ public class TempleChestBlockEntity extends RandomizableContainerBlockEntity imp
     public void tryUnlock(Player player, InteractionHand hand) {
         if(!this.unlocked) {
             ItemStack itemInHand = player.getItemInHand(hand);
-            if(itemInHand.is(Items.DIAMOND)) {
+            if(itemInHand.is(UndergroundJungleItems.TEMPLE_KEY.get())) {
                 if(!player.isCreative()) {
                     itemInHand.shrink(1);
                 }

@@ -33,6 +33,8 @@ public class UndergroundJungleEvents {
             event.accept(UndergroundJungleItems.MUSHROOM_VINES::get);
         } else if(event.getTab().equals(CreativeModeTabs.FUNCTIONAL_BLOCKS)) {
             event.accept(UndergroundJungleItems.TEMPLE_CHEST::get);
+        } else if(event.getTab().equals(CreativeModeTabs.TOOLS_AND_UTILITIES)) {
+            event.accept(UndergroundJungleItems.TEMPLE_KEY::get);
         }
     }
 
