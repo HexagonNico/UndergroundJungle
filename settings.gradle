@@ -5,4 +5,4 @@ pluginManagement {
     }
 }
 
-include('common', 'forge-1.19.4')
+include('common', 'forge-1.19.4', 'forge-1.20.1')
