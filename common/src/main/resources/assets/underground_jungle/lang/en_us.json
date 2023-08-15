@@ -19,5 +19,10 @@
   "block.underground_jungle.jungle_vines": "Jungle Vines",
   "block.underground_jungle.mushroom_vines": "Mushroom Vines",
   "container.temple_chest": "Temple Chest",
-  "item.underground_jungle.temple_key": "Temple Key"
+  "item.underground_jungle.temple_key": "Temple Key",
+  "item.underground_jungle.temple_pickaxe": "Pickaxe of the Temple",
+  "item.underground_jungle.temple_sword": "Sword of the Temple",
+  "item.underground_jungle.temple_axe": "Axe of the Temple",
+  "item.underground_jungle.temple_shovel": "Shovel of the temple",
+  "item.underground_jungle.temple_hoe": "Hoe of the temple"
 }

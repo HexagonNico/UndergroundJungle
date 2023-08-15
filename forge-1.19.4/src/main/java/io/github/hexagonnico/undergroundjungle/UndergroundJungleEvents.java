@@ -4,6 +4,7 @@ import io.github.hexagonnico.undergroundjungle.renderers.TempleChestRenderer;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.event.CreativeModeTabEvent;
+import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class UndergroundJungleEvents {
@@ -35,6 +36,13 @@ public class UndergroundJungleEvents {
             event.accept(UndergroundJungleItems.TEMPLE_CHEST::get);
         } else if(event.getTab().equals(CreativeModeTabs.TOOLS_AND_UTILITIES)) {
             event.accept(UndergroundJungleItems.TEMPLE_KEY::get);
+            event.accept(UndergroundJungleItems.TEMPLE_SHOVEL::get);
+            event.accept(UndergroundJungleItems.TEMPLE_PICKAXE::get);
+            event.accept(UndergroundJungleItems.TEMPLE_AXE::get);
+            event.accept(UndergroundJungleItems.TEMPLE_HOE::get);
+        } else if(event.getTab().equals(CreativeModeTabs.COMBAT)) {
+            event.accept(UndergroundJungleItems.TEMPLE_SWORD::get);
+            event.accept(UndergroundJungleItems.TEMPLE_AXE::get);
         }
     }
 
