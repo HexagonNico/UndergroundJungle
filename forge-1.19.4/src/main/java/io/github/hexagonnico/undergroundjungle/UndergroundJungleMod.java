@@ -15,6 +15,7 @@ public class UndergroundJungleMod {
         UndergroundJungleBlocks.register(eventBus);
         UndergroundJungleBlockEntities.register(eventBus);
         UndergroundJungleItems.register(eventBus);
+        UndergroundJungleEntities.register(eventBus);
         eventBus.register(new UndergroundJungleEvents());
         MinecraftForge.EVENT_BUS.register(this);
     }
