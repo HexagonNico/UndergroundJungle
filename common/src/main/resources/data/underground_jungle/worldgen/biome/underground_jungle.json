@@ -113,7 +113,7 @@
       {
         "type": "underground_jungle:jungle_zombie",
         "maxCount": 4,
-        "minCount": 4,
+        "minCount": 1,
         "weight": 95
       },
       {

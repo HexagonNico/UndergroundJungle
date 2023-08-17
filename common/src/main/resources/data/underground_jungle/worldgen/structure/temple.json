@@ -12,8 +12,8 @@
       "spawns": [
         {
           "type": "underground_jungle:jungle_skeleton",
-          "maxCount": 3,
-          "minCount": 1,
+          "maxCount": 4,
+          "minCount": 2,
           "weight": 1
         }
       ]

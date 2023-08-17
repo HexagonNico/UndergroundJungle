@@ -117,13 +117,13 @@
       {
         "type": "underground_jungle:spores_zombie",
         "maxCount": 4,
-        "minCount": 4,
+        "minCount": 1,
         "weight": 95
       },
       {
         "type": "underground_jungle:spores_skeleton",
         "maxCount": 4,
-        "minCount": 4,
+        "minCount": 1,
         "weight": 100
       },
       {
