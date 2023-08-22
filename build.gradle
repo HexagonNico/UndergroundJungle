@@ -1,30 +1,31 @@
 plugins {
     id 'eclipse'
-    id 'idea'
     id 'maven-publish'
-    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'net.minecraftforge.gradle' version '5.1.+'
     id 'org.spongepowered.mixin' version '0.7.+'
 }
 
-def minecraft_version = '1.19.4'
+version = "forge-${minecraft_version}-${mod_version}"
+group = 'io.github.hexagonnico.undergroundjungle'
+archivesBaseName = mod_id
 
-archivesBaseName = "${mod_id}-forge-${minecraft_version}"
-
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
 
 minecraft {
     mappings channel: 'official', version: minecraft_version
-
     runs {
         client {
-            workingDirectory project.file('../run')
+            workingDirectory this.file('run')
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
             property 'forge.enabledGameTestNamespaces', mod_id
             mods {
                 "${mod_id}" {
-                    source sourceSets.main
-                    source project(':common').sourceSets.main
+                    source this.sourceSets.main
                 }
             }
         }
@@ -33,20 +34,9 @@ minecraft {
 
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
-repositories {
-
-}
-
-def forge_version = '45.1.0'
-
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-    implementation project(':common')
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
-}
-
-processResources {
-    from project(":common").sourceSets.main.resources
 }
 
 mixin {
@@ -58,20 +48,17 @@ jar {
     manifest {
         attributes([
                 "Specification-Title": mod_id,
-                "Specification-Vendor": mod_author,
-                "Specification-Version": version,
-                "Implementation-Title": mod_name,
+                "Specification-Vendor": "HexagonNico",
+                "Specification-Version": mod_version,
+                "Implementation-Title": project.name,
                 "Implementation-Version": project.jar.archiveVersion,
-                "Implementation-Vendor": mod_author,
+                "Implementation-Vendor": "HexagonNico",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-    from project(":common").sourceSets.main.allSource
 }
 
 jar.finalizedBy('reobfJar')
-// publish.dependsOn('reobfJar')
 
 publishing {
     publications {
