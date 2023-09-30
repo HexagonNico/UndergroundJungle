@@ -2,6 +2,7 @@ package io.github.hexagonnico.undergroundjungle.entities;
 
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
@@ -33,8 +34,23 @@ public class JungleSkeleton extends AbstractSkeleton {
     }
 
     @Override
+    protected SoundEvent getAmbientSound() {
+        return SoundEvents.SKELETON_AMBIENT;
+    }
+
+    @Override
+    protected SoundEvent getHurtSound(@NotNull DamageSource damageSource) {
+        return SoundEvents.SKELETON_HURT;
+    }
+
+    @Override
+    protected SoundEvent getDeathSound() {
+        return SoundEvents.SKELETON_DEATH;
+    }
+
+    @Override
     protected @NotNull SoundEvent getStepSound() {
-        return SoundEvents.STRAY_STEP;
+        return SoundEvents.SKELETON_STEP;
     }
 
     @Override

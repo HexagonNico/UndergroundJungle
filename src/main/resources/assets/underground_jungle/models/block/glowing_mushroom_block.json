@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/template_single_face",
-  "textures": {
-    "texture": "underground_jungle:block/glowing_mushroom_block"
-  }
-}

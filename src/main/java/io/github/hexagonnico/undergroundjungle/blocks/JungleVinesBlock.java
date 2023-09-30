@@ -11,11 +11,8 @@ import org.jetbrains.annotations.NotNull;
 
 public class JungleVinesBlock extends GrowingPlantHeadBlock {
 
-    private final Type type;
-
-    public JungleVinesBlock(Properties properties, Type type) {
+    public JungleVinesBlock(Properties properties) {
         super(properties, Direction.DOWN, CaveVines.SHAPE, false, 0.1);
-        this.type = type;
     }
 
     @Override
@@ -30,14 +27,6 @@ public class JungleVinesBlock extends GrowingPlantHeadBlock {
 
     @Override
     protected @NotNull Block getBodyBlock() {
-        return switch (this.type) {
-            case REGULAR -> UndergroundJungleBlocks.JUNGLE_VINES_PLANT.get();
-            case MUSHROOM -> UndergroundJungleBlocks.MUSHROOM_VINES_PLANT.get();
-        };
-    }
-
-    public enum Type {
-        REGULAR,
-        MUSHROOM
+        return UndergroundJungleBlocks.JUNGLE_VINES_PLANT.get();
     }
 }

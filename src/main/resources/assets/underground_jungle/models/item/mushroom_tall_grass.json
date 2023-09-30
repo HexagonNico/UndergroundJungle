@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "underground_jungle:block/mushroom_tall_grass_1"
-  }
-}

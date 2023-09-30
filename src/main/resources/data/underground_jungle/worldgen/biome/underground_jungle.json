@@ -112,9 +112,9 @@
       },
       {
         "type": "underground_jungle:jungle_zombie",
-        "maxCount": 4,
+        "maxCount": 2,
         "minCount": 1,
-        "weight": 95
+        "weight": 80
       },
       {
         "type": "minecraft:skeleton",

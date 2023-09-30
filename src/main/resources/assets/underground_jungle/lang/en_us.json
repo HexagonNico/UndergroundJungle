@@ -12,17 +12,12 @@
   "block.underground_jungle.temple_brick_tile_slab": "Temple Brick Tile Slab",
   "block.underground_jungle.temple_brick_tile_wall": "Temple Brick Tile Wall",
   "block.underground_jungle.temple_chest": "Temple Chest",
-  "block.underground_jungle.glowing_mushroom": "Glowing Mushroom",
-  "block.underground_jungle.glowing_mushroom_block": "Glowing Mushroom Block",
-  "block.underground_jungle.mushroom_grass": "Mushroom Grass",
-  "block.underground_jungle.mushroom_tall_grass": "Mushroom Tall Grass",
   "block.underground_jungle.jungle_vines": "Jungle Vines",
-  "block.underground_jungle.mushroom_vines": "Mushroom Vines",
   "container.temple_chest": "Temple Chest",
   "item.underground_jungle.temple_key": "Temple Key",
-  "item.underground_jungle.temple_pickaxe": "Pickaxe of the Temple",
-  "item.underground_jungle.temple_sword": "Sword of the Temple",
-  "item.underground_jungle.temple_axe": "Axe of the Temple",
-  "item.underground_jungle.temple_shovel": "Shovel of the temple",
-  "item.underground_jungle.temple_hoe": "Hoe of the temple"
+  "item.underground_jungle.temple_pickaxe": "Pickaxe of the Jungle Temple",
+  "item.underground_jungle.temple_sword": "Sword of the Jungle Temple",
+  "item.underground_jungle.temple_axe": "Axe of the Jungle Temple",
+  "item.underground_jungle.temple_shovel": "Shovel of the Jungle Temple",
+  "item.underground_jungle.temple_hoe": "Hoe of the Jungle Temple"
 }

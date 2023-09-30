@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cross",
-  "textures": {
-    "cross": "underground_jungle:block/mushroom_tall_grass_1"
-  },
-  "render_type": "cutout"
-}

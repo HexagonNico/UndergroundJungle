@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "underground_jungle:block/glowing_mushroom_block"
-  }
-}

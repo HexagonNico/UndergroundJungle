@@ -28,12 +28,7 @@ public class UndergroundJungleEvents {
             event.accept(UndergroundJungleItems.TEMPLE_BRICK_TILE_WALL::get);
         } else if(event.getTab().equals(CreativeModeTabs.NATURAL_BLOCKS)) {
             event.accept(UndergroundJungleItems.JUNGLE_GRASS::get);
-            event.accept(UndergroundJungleItems.MUSHROOM_GRASS::get);
             event.accept(UndergroundJungleItems.JUNGLE_VINES::get);
-            event.accept(UndergroundJungleItems.GLOWING_MUSHROOM::get);
-            event.accept(UndergroundJungleItems.GLOWING_MUSHROOM_BLOCK::get);
-            event.accept(UndergroundJungleItems.MUSHROOM_TALL_GRASS::get);
-            event.accept(UndergroundJungleItems.MUSHROOM_VINES::get);
         } else if(event.getTab().equals(CreativeModeTabs.FUNCTIONAL_BLOCKS)) {
             event.accept(UndergroundJungleItems.TEMPLE_CHEST::get);
         } else if(event.getTab().equals(CreativeModeTabs.TOOLS_AND_UTILITIES)) {
@@ -54,8 +49,6 @@ public class UndergroundJungleEvents {
         event.registerBlockEntityRenderer(UndergroundJungleBlockEntities.TEMPLE_CHEST.get(), TempleChestRenderer::new);
         event.registerEntityRenderer(UndergroundJungleEntities.JUNGLE_SKELETON.get(), JungleSkeletonRenderer::new);
         event.registerEntityRenderer(UndergroundJungleEntities.JUNGLE_ZOMBIE.get(), JungleZombieRenderer::new);
-        event.registerEntityRenderer(UndergroundJungleEntities.SPORES_SKELETON.get(), SporesSkeletonRenderer::new);
-        event.registerEntityRenderer(UndergroundJungleEntities.SPORES_ZOMBIE.get(), SporesZombieRenderer::new);
     }
 
     @SubscribeEvent
@@ -63,7 +56,5 @@ public class UndergroundJungleEvents {
     public void createAttributes(EntityAttributeCreationEvent event) {
         event.put(UndergroundJungleEntities.JUNGLE_SKELETON.get(), JungleSkeleton.attributes().build());
         event.put(UndergroundJungleEntities.JUNGLE_ZOMBIE.get(), JungleZombie.attributes().build());
-        event.put(UndergroundJungleEntities.SPORES_SKELETON.get(), JungleSkeleton.attributes().build());
-        event.put(UndergroundJungleEntities.SPORES_ZOMBIE.get(), JungleZombie.attributes().build());
     }
 }

@@ -5,8 +5,6 @@ import io.github.hexagonnico.undergroundjungle.blocks.JungleVinesPlantBlock;
 import io.github.hexagonnico.undergroundjungle.blocks.MudGrassBlock;
 import io.github.hexagonnico.undergroundjungle.blocks.TempleChestBlock;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
@@ -32,14 +30,8 @@ public class UndergroundJungleBlocks {
     public static final RegistryObject<Block> TEMPLE_BRICK_TILE_SLAB = REGISTER.register("temple_brick_tile_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(TEMPLE_BRICK_TILES.get())));
     public static final RegistryObject<Block> TEMPLE_BRICK_TILE_WALL = REGISTER.register("temple_brick_tile_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(TEMPLE_BRICK_TILES.get())));
     public static final RegistryObject<Block> TEMPLE_CHEST = REGISTER.register("temple_chest", () -> new TempleChestBlock(BlockBehaviour.Properties.copy(TEMPLE_BRICKS.get()).strength(-1.0F, 3600000.0F).noLootTable()));
-    public static final RegistryObject<Block> GLOWING_MUSHROOM = REGISTER.register("glowing_mushroom", () -> new MushroomBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_BLUE).noCollission().randomTicks().instabreak().sound(SoundType.GRASS).lightLevel(state -> 7).hasPostProcess((state, getter, pos) -> true), ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(UndergroundJungleMod.ID, "huge_glowing_mushroom"))));
-    public static final RegistryObject<Block> GLOWING_MUSHROOM_BLOCK = REGISTER.register("glowing_mushroom_block", () -> new HugeMushroomBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.COLOR_BLUE).strength(0.2F).sound(SoundType.WOOD).lightLevel(state -> 10)));
-    public static final RegistryObject<Block> MUSHROOM_TALL_GRASS = REGISTER.register("mushroom_tall_grass", () -> new TallGrassBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XYZ)));
-    public static final RegistryObject<Block> MUSHROOM_GRASS = REGISTER.register("mushroom_grass", () -> new MudGrassBlock(BlockBehaviour.Properties.copy(JUNGLE_GRASS.get()).color(MaterialColor.COLOR_BLUE), "mushroom_vegetation"));
-    public static final RegistryObject<Block> JUNGLE_VINES_PLANT = REGISTER.register("jungle_vines_plant", () -> new JungleVinesPlantBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.CAVE_VINES), JungleVinesBlock.Type.REGULAR));
-    public static final RegistryObject<Block> JUNGLE_VINES = REGISTER.register("jungle_vines", () -> new JungleVinesBlock(BlockBehaviour.Properties.copy(JUNGLE_VINES_PLANT.get()), JungleVinesBlock.Type.REGULAR));
-    public static final RegistryObject<Block> MUSHROOM_VINES_PLANT = REGISTER.register("mushroom_vines_plant", () -> new JungleVinesPlantBlock(BlockBehaviour.Properties.copy(JUNGLE_VINES_PLANT.get()), JungleVinesBlock.Type.MUSHROOM));
-    public static final RegistryObject<Block> MUSHROOM_VINES = REGISTER.register("mushroom_vines", () -> new JungleVinesBlock(BlockBehaviour.Properties.copy(MUSHROOM_VINES_PLANT.get()), JungleVinesBlock.Type.MUSHROOM));
+    public static final RegistryObject<Block> JUNGLE_VINES_PLANT = REGISTER.register("jungle_vines_plant", () -> new JungleVinesPlantBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.CAVE_VINES)));
+    public static final RegistryObject<Block> JUNGLE_VINES = REGISTER.register("jungle_vines", () -> new JungleVinesBlock(BlockBehaviour.Properties.copy(JUNGLE_VINES_PLANT.get())));
 
     public static void register(IEventBus eventBus) {
         REGISTER.register(eventBus);

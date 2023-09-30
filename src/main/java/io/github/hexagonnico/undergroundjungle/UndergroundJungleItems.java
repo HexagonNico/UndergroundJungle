@@ -36,12 +36,7 @@ public class UndergroundJungleItems {
     public static final RegistryObject<BlockItem> TEMPLE_BRICK_TILE_SLAB = REGISTER.register("temple_brick_tile_slab", () -> new BlockItem(UndergroundJungleBlocks.TEMPLE_BRICK_TILE_SLAB.get(), new Item.Properties()));
     public static final RegistryObject<BlockItem> TEMPLE_BRICK_TILE_WALL = REGISTER.register("temple_brick_tile_wall", () -> new BlockItem(UndergroundJungleBlocks.TEMPLE_BRICK_TILE_WALL.get(), new Item.Properties()));
     public static final RegistryObject<BlockItem> TEMPLE_CHEST = REGISTER.register("temple_chest", () -> new BlockEntityItem(UndergroundJungleBlocks.TEMPLE_CHEST.get(), TempleChestBlockEntity::new, new Item.Properties()));
-    public static final RegistryObject<BlockItem> GLOWING_MUSHROOM = REGISTER.register("glowing_mushroom", () -> new BlockItem(UndergroundJungleBlocks.GLOWING_MUSHROOM.get(), new Item.Properties()));
-    public static final RegistryObject<BlockItem> GLOWING_MUSHROOM_BLOCK = REGISTER.register("glowing_mushroom_block", () -> new BlockItem(UndergroundJungleBlocks.GLOWING_MUSHROOM_BLOCK.get(), new Item.Properties()));
-    public static final RegistryObject<BlockItem> MUSHROOM_TALL_GRASS = REGISTER.register("mushroom_tall_grass", () -> new BlockItem(UndergroundJungleBlocks.MUSHROOM_TALL_GRASS.get(), new Item.Properties()));
-    public static final RegistryObject<BlockItem> MUSHROOM_GRASS = REGISTER.register("mushroom_grass", () -> new BlockItem(UndergroundJungleBlocks.MUSHROOM_GRASS.get(), new Item.Properties()));
     public static final RegistryObject<BlockItem> JUNGLE_VINES = REGISTER.register("jungle_vines", () -> new BlockItem(UndergroundJungleBlocks.JUNGLE_VINES.get(), new Item.Properties()));
-    public static final RegistryObject<BlockItem> MUSHROOM_VINES = REGISTER.register("mushroom_vines", () -> new BlockItem(UndergroundJungleBlocks.MUSHROOM_VINES.get(), new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         REGISTER.register(eventBus);
