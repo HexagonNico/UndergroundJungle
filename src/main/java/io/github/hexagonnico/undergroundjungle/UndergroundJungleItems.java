@@ -39,6 +39,7 @@ public class UndergroundJungleItems {
     public static final RegistryObject<BlockItem> TEMPLE_CHEST = REGISTER.register("temple_chest", () -> new BlockEntityItem(UndergroundJungleBlocks.TEMPLE_CHEST.get(), TempleChestBlockEntity::new, new Item.Properties()));
     public static final RegistryObject<BlockItem> JUNGLE_VINES = REGISTER.register("jungle_vines", () -> new BlockItem(UndergroundJungleBlocks.JUNGLE_VINES.get(), new Item.Properties()));
     public static final RegistryObject<Item> MOSSY_SKELETON_SPAWN_EGG = REGISTER.register("mossy_skeleton_spawn_egg", () -> new ForgeSpawnEggItem(UndergroundJungleEntities.MOSSY_SKELETON, 12698049, 7969893, new Item.Properties()));
+    public static final RegistryObject<Item> JUNGLE_ZOMBIE_SPAWN_EGG = REGISTER.register("jungle_zombie_spawn_egg", () -> new ForgeSpawnEggItem(UndergroundJungleEntities.JUNGLE_ZOMBIE, 44975, 9945732, new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         REGISTER.register(eventBus);

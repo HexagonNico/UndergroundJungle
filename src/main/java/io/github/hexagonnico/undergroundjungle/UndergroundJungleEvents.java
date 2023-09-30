@@ -44,6 +44,7 @@ public class UndergroundJungleEvents {
             event.accept(UndergroundJungleItems.TEMPLE_AXE.get());
         } else if(event.getTab().equals(CreativeModeTabs.SPAWN_EGGS)) {
             event.accept(UndergroundJungleItems.MOSSY_SKELETON_SPAWN_EGG.get());
+            event.accept(UndergroundJungleItems.JUNGLE_ZOMBIE_SPAWN_EGG.get());
         }
     }
 
