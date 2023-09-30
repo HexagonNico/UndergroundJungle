@@ -16,7 +16,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
-public class JungleSkeleton extends AbstractSkeleton {
+public class MossySkeleton extends AbstractSkeleton {
 
     public static AttributeSupplier.Builder attributes() {
         return Mob.createMobAttributes()
@@ -29,7 +29,7 @@ public class JungleSkeleton extends AbstractSkeleton {
             .add(Attributes.SPAWN_REINFORCEMENTS_CHANCE, 0.0);
     }
 
-    public JungleSkeleton(EntityType<? extends AbstractSkeleton> type, Level world) {
+    public MossySkeleton(EntityType<? extends AbstractSkeleton> type, Level world) {
         super(type, world);
     }
 

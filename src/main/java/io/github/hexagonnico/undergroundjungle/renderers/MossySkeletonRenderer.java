@@ -7,11 +7,11 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.monster.AbstractSkeleton;
 import org.jetbrains.annotations.NotNull;
 
-public class JungleSkeletonRenderer extends SkeletonRenderer {
+public class MossySkeletonRenderer extends SkeletonRenderer {
 
-    private static final ResourceLocation TEXTURE_LOCATION = new ResourceLocation(UndergroundJungleMod.ID, "textures/entity/jungle_skeleton.png");
+    private static final ResourceLocation TEXTURE_LOCATION = new ResourceLocation(UndergroundJungleMod.ID, "textures/entity/mossy_skeleton.png");
 
-    public JungleSkeletonRenderer(EntityRendererProvider.Context context) {
+    public MossySkeletonRenderer(EntityRendererProvider.Context context) {
         super(context);
     }
 

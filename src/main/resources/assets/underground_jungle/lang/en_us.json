@@ -19,5 +19,7 @@
   "item.underground_jungle.temple_sword": "Sword of the Jungle Temple",
   "item.underground_jungle.temple_axe": "Axe of the Jungle Temple",
   "item.underground_jungle.temple_shovel": "Shovel of the Jungle Temple",
-  "item.underground_jungle.temple_hoe": "Hoe of the Jungle Temple"
+  "item.underground_jungle.temple_hoe": "Hoe of the Jungle Temple",
+  "item.underground_jungle.mossy_skeleton_spawn_egg": "Mossy Skeleton Spawn Egg",
+  "entity.underground_jungle.mossy_skeleton": "Mossy Skeleton"
 }

@@ -5,6 +5,7 @@ import io.github.hexagonnico.undergroundjungle.items.BlockEntityItem;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.common.ForgeTier;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -37,6 +38,7 @@ public class UndergroundJungleItems {
     public static final RegistryObject<BlockItem> TEMPLE_BRICK_TILE_WALL = REGISTER.register("temple_brick_tile_wall", () -> new BlockItem(UndergroundJungleBlocks.TEMPLE_BRICK_TILE_WALL.get(), new Item.Properties()));
     public static final RegistryObject<BlockItem> TEMPLE_CHEST = REGISTER.register("temple_chest", () -> new BlockEntityItem(UndergroundJungleBlocks.TEMPLE_CHEST.get(), TempleChestBlockEntity::new, new Item.Properties()));
     public static final RegistryObject<BlockItem> JUNGLE_VINES = REGISTER.register("jungle_vines", () -> new BlockItem(UndergroundJungleBlocks.JUNGLE_VINES.get(), new Item.Properties()));
+    public static final RegistryObject<Item> MOSSY_SKELETON_SPAWN_EGG = REGISTER.register("mossy_skeleton_spawn_egg", () -> new ForgeSpawnEggItem(UndergroundJungleEntities.MOSSY_SKELETON, 12698049, 7969893, new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         REGISTER.register(eventBus);
