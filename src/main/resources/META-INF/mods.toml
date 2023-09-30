@@ -1,21 +1,18 @@
 modLoader="javafml"
 loaderVersion="[45,)"
-license="All rights reserevd"
-#issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/"
+license="CC BY-NC-ND 4.0"
+issueTrackerURL="https://github.com/HexagonNico/MinecraftMod-UndergroundJungle/issues"
+
 [[mods]]
 modId="underground_jungle"
-version="0.1"
+version="${file.jarVersion}"
 displayName="Underground Jungle"
-#updateJSONURL="https://change.me.example.invalid/updates.json"
-#displayURL="https://change.me.to.your.mods.homepage.example.invalid/"
+#updateJSONURL="https://mcforge.readthedocs.io/en/latest/gettingstarted/autoupdate/"
+displayURL="https://github.com/HexagonNico/MinecraftMod-UndergroundJungle"
 logoFile="logo.png"
-#credits="Credits go here"
+credits="Chiseled Temple Bricks texture: https://opengameart.org/content/inca-tileset"
 authors="HexagonNico"
-#displayTest="MATCH_VERSION"
-
-description='''
-This is a description. You're welcome.
-'''
+description="Adds an underground jungle biome and an underground jungle temple"
 
 [[dependencies.underground_jungle]]
     modId="forge"
