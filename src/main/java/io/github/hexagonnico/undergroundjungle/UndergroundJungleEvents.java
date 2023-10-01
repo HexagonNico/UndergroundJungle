@@ -7,7 +7,7 @@ import io.github.hexagonnico.undergroundjungle.renderers.MossySkeletonRenderer;
 import io.github.hexagonnico.undergroundjungle.renderers.TempleChestRenderer;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.event.CreativeModeTabEvent;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
@@ -15,8 +15,8 @@ public class UndergroundJungleEvents {
 
     @SubscribeEvent
     @SuppressWarnings("unused")
-    public void creativeTabEvent(CreativeModeTabEvent.BuildContents event) {
-        if(event.getTab().equals(CreativeModeTabs.BUILDING_BLOCKS)) {
+    public void creativeTabEvent(BuildCreativeModeTabContentsEvent event) {
+        if(event.getTabKey().equals(CreativeModeTabs.BUILDING_BLOCKS)) {
             event.accept(UndergroundJungleItems.TEMPLE_BRICKS.get());
             event.accept(UndergroundJungleItems.CRACKED_TEMPLE_BRICKS.get());
             event.accept(UndergroundJungleItems.MOSSY_TEMPLE_BRICKS.get());
@@ -28,21 +28,21 @@ public class UndergroundJungleEvents {
             event.accept(UndergroundJungleItems.TEMPLE_BRICK_TILE_STAIRS.get());
             event.accept(UndergroundJungleItems.TEMPLE_BRICK_TILE_SLAB.get());
             event.accept(UndergroundJungleItems.TEMPLE_BRICK_TILE_WALL.get());
-        } else if(event.getTab().equals(CreativeModeTabs.NATURAL_BLOCKS)) {
+        } else if(event.getTabKey().equals(CreativeModeTabs.NATURAL_BLOCKS)) {
             event.accept(UndergroundJungleItems.JUNGLE_GRASS.get());
             event.accept(UndergroundJungleItems.JUNGLE_VINES.get());
-        } else if(event.getTab().equals(CreativeModeTabs.FUNCTIONAL_BLOCKS)) {
+        } else if(event.getTabKey().equals(CreativeModeTabs.FUNCTIONAL_BLOCKS)) {
             event.accept(UndergroundJungleItems.TEMPLE_CHEST.get());
-        } else if(event.getTab().equals(CreativeModeTabs.TOOLS_AND_UTILITIES)) {
+        } else if(event.getTabKey().equals(CreativeModeTabs.TOOLS_AND_UTILITIES)) {
             event.accept(UndergroundJungleItems.TEMPLE_KEY.get());
             event.accept(UndergroundJungleItems.TEMPLE_SHOVEL.get());
             event.accept(UndergroundJungleItems.TEMPLE_PICKAXE.get());
             event.accept(UndergroundJungleItems.TEMPLE_AXE.get());
             event.accept(UndergroundJungleItems.TEMPLE_HOE.get());
-        } else if(event.getTab().equals(CreativeModeTabs.COMBAT)) {
+        } else if(event.getTabKey().equals(CreativeModeTabs.COMBAT)) {
             event.accept(UndergroundJungleItems.TEMPLE_SWORD.get());
             event.accept(UndergroundJungleItems.TEMPLE_AXE.get());
-        } else if(event.getTab().equals(CreativeModeTabs.SPAWN_EGGS)) {
+        } else if(event.getTabKey().equals(CreativeModeTabs.SPAWN_EGGS)) {
             event.accept(UndergroundJungleItems.MOSSY_SKELETON_SPAWN_EGG.get());
             event.accept(UndergroundJungleItems.JUNGLE_ZOMBIE_SPAWN_EGG.get());
         }

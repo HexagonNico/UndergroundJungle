@@ -20,7 +20,7 @@ import net.minecraft.world.level.block.SnowLayerBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.lighting.LayerLightEngine;
+import net.minecraft.world.level.lighting.LightEngine;
 import org.jetbrains.annotations.NotNull;
 
 public class MudGrassBlock extends Block implements BonemealableBlock {
@@ -63,7 +63,7 @@ public class MudGrassBlock extends Block implements BonemealableBlock {
         } else if (blockStateAbove.getFluidState().getAmount() == 8) {
             return false;
         } else {
-            return LayerLightEngine.getLightBlockInto(world, blockState, pos, blockStateAbove, posAbove, Direction.UP, blockStateAbove.getLightBlock(world, posAbove)) < world.getMaxLightLevel();
+            return LightEngine.getLightBlockInto(world, blockState, pos, blockStateAbove, posAbove, Direction.UP, blockStateAbove.getLightBlock(world, posAbove)) < world.getMaxLightLevel();
         }
     }
 

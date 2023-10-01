@@ -32,7 +32,7 @@ public class JungleZombie extends Zombie {
     @Override
     public boolean doHurtTarget(@NotNull Entity target) {
         boolean flag = super.doHurtTarget(target);
-        if(flag && this.getLevel().getRandom().nextFloat() < 0.2f && this.getMainHandItem().isEmpty() && target instanceof LivingEntity livingEntity) {
+        if(flag && this.random.nextFloat() < 0.2f && this.getMainHandItem().isEmpty() && target instanceof LivingEntity livingEntity) {
             livingEntity.addEffect(new MobEffectInstance(MobEffects.POISON, 60), this);
         }
         return flag;
