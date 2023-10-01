@@ -1,14 +1,14 @@
 modLoader="javafml"
 loaderVersion="[45,)"
 license="CC BY-NC-ND 4.0"
-issueTrackerURL="https://github.com/HexagonNico/MinecraftMod-UndergroundJungle/issues"
+issueTrackerURL="https://github.com/HexagonNico/UndergroundJungle/issues"
 
 [[mods]]
 modId="underground_jungle"
 version="${file.jarVersion}"
 displayName="Underground Jungle"
 #updateJSONURL="https://mcforge.readthedocs.io/en/latest/gettingstarted/autoupdate/"
-displayURL="https://github.com/HexagonNico/MinecraftMod-UndergroundJungle"
+displayURL="https://github.com/HexagonNico/UndergroundJungle"
 logoFile="logo.png"
 credits="Chiseled Temple Bricks texture: https://opengameart.org/content/inca-tileset"
 authors="HexagonNico"

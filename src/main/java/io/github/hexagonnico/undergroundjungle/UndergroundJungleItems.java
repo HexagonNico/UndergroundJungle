@@ -16,7 +16,7 @@ public class UndergroundJungleItems {
 
     private static final DeferredRegister<Item> REGISTER = DeferredRegister.create(Registries.ITEM, UndergroundJungleMod.ID);
 
-    public static final ForgeTier TOOLS_TIER = new ForgeTier(4, 64, 12.0f, 3.0f, 20, Tags.Blocks.NEEDS_NETHERITE_TOOL, () -> Ingredient.EMPTY);
+    public static final ForgeTier TOOLS_TIER = new ForgeTier(4, 256, 14.0f, 3.0f, 20, Tags.Blocks.NEEDS_NETHERITE_TOOL, () -> Ingredient.EMPTY);
 
     public static final RegistryObject<Item> TEMPLE_KEY = REGISTER.register("temple_key", () -> new Item(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> TEMPLE_SWORD = REGISTER.register("temple_sword", () -> new SwordItem(TOOLS_TIER, 3, -2.4f, new Item.Properties()));
