@@ -33,6 +33,7 @@ sourceSets.main.resources.srcDir 'src/generated/resources'
 dependencies {
     minecraft "net.minecraftforge:forge:1.19.4-45.2.0"
     compileOnly project(":common-1.19")
+    compileOnly project(":common")
 }
 
 tasks.withType(JavaCompile).configureEach {
