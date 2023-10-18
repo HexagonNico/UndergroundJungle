@@ -1,16 +1,22 @@
 package io.github.hexagonnico.undergroundjungle.forge;
 
-import io.github.hexagonnico.undergroundjungle.CommonRegistry;
+import io.github.hexagonnico.undergroundjungle.CommonInitializer;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 
+/**
+ * Forge mod initializer.
+ *
+ * @author Nico
+ */
 @Mod(ForgeInitializer.MOD_ID)
-public class ForgeInitializer {
+public class ForgeInitializer extends CommonInitializer {
 
-    public static final String MOD_ID = "underground_jungle";
-
+    /**
+     * Initialize forge.
+     */
     public ForgeInitializer() {
-        CommonRegistry.init(new ForgeRegistry());
+        this.init(new ForgeRegistry());
         MinecraftForge.EVENT_BUS.register(this);
     }
 }
