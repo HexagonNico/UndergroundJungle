@@ -1,7 +1,6 @@
 package io.github.hexagonnico.undergroundjungle.forge;
 
-import io.github.hexagonnico.undergroundjungle.AbstractRegistry;
-import io.github.hexagonnico.undergroundjungle.CommonInitializer;
+import io.github.hexagonnico.undergroundjungle.ModRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -23,48 +22,39 @@ import java.util.function.Supplier;
  *
  * @author Nico
  */
-public class ForgeRegistry extends AbstractRegistry {
+public class ForgeRegistry implements ModRegistry {
 
     /** Blocks deferred register */
-    private final DeferredRegister<Block> blocks = DeferredRegister.create(ForgeRegistries.BLOCKS, CommonInitializer.MOD_ID);
+    private final DeferredRegister<Block> blocks = DeferredRegister.create(ForgeRegistries.BLOCKS, "underground_jungle");
     /** Items deferred register */
-    private final DeferredRegister<Item> items = DeferredRegister.create(ForgeRegistries.ITEMS, CommonInitializer.MOD_ID);
+    private final DeferredRegister<Item> items = DeferredRegister.create(ForgeRegistries.ITEMS, "underground_jungle");
     /** Block entities deferred register */
-    private final DeferredRegister<BlockEntityType<?>> blockEntities = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, CommonInitializer.MOD_ID);
+    private final DeferredRegister<BlockEntityType<?>> blockEntities = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, "underground_jungle");
     /** Entities deferred register */
-    private final DeferredRegister<EntityType<?>> entities = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, CommonInitializer.MOD_ID);
+    private final DeferredRegister<EntityType<?>> entities = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, "underground_jungle");
 
     @Override
-    protected Supplier<Item> registerItem(String name, Supplier<Item> item) {
-        return this.items.register(name, item);
-    }
-
-    @Override
-    protected Supplier<Block> registerBlock(String name, Supplier<Block> block) {
+    public <T extends Block> Supplier<T> registerBlock(String name, Supplier<T> block) {
         return this.blocks.register(name, block);
     }
 
     @Override
-    public void addBlockEntityAndItem(String name, Supplier<Block> block, BiFunction<BlockPos, BlockState, BlockEntity> blockEntity) {
-        // Override the behaviour for rendering block entity items with forge
-        this.addItem(name, () -> new BlockEntityItem(this.getBlock(name), blockEntity::apply, new Item.Properties()));
-        this.addBlockEntity(name, block, blockEntity);
+    public <T extends Item> Supplier<T> registerItem(String name, Supplier<T> item) {
+        return this.items.register(name, item);
     }
 
     @Override
-    @SuppressWarnings("DataFlowIssue")
-    protected Supplier<BlockEntityType<?>> registerBlockEntity(String name, Supplier<Block> block, BiFunction<BlockPos, BlockState, BlockEntity> blockEntity) {
-        // Must be done like this because BlockEntitySupplier is inaccessible in the common module
+    public <T extends BlockEntity> Supplier<BlockEntityType<T>> registerBlockEntity(String name, Supplier<? extends Block> block, BiFunction<BlockPos, BlockState, T> blockEntity) {
         return this.blockEntities.register(name, () -> BlockEntityType.Builder.of(blockEntity::apply, block.get()).build(null));
     }
 
     @Override
-    protected Supplier<EntityType<? extends Entity>> registerEntity(String name, Supplier<EntityType<? extends Entity>> entityType) {
-        return this.entities.register(name, entityType);
+    public <T extends Entity> Supplier<EntityType<T>> registerEntity(String name, EntityType.Builder<T> builder) {
+        return this.entities.register(name, () -> builder.build(name));
     }
 
     @Override
-    public void registerAll() {
+    public void register() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
         this.blocks.register(eventBus);
         this.items.register(eventBus);
