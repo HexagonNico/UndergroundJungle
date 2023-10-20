@@ -14,8 +14,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.function.Consumer;
 
-@SuppressWarnings("unused")
 @Mixin(OverworldBiomeBuilder.class)
+@SuppressWarnings("unused")
 public class OverworldBiomeBuilderMixin {
 
     private static final float TEMPERATURE_MIN = 0.4f;

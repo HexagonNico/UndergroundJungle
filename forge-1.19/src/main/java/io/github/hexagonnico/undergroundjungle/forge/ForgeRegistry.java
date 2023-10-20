@@ -1,10 +1,12 @@
 package io.github.hexagonnico.undergroundjungle.forge;
 
 import io.github.hexagonnico.undergroundjungle.ModRegistry;
+import io.github.hexagonnico.undergroundjungle.forge.items.BlockEntityItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.block.Block;
@@ -53,10 +55,11 @@ public class ForgeRegistry implements ModRegistry {
         return this.blockEntities.register(name, () -> BlockEntityType.Builder.of(blockEntity::apply, block.get()).build(null));
     }
 
-//    @Override
-//    public Supplier<BlockItem> registerBlockEntityItem(String name, Supplier<? extends Block> block, BiFunction<BlockPos, BlockState, ? extends BlockEntity> blockEntity) {
-//        return this.registerItem(name, () -> new BlockEntityItem(block.get(), blockEntity::apply, new Item.Properties()));
-//    }
+    @Override
+    public Supplier<BlockItem> registerBlockEntityItem(String name, Supplier<? extends Block> block, BiFunction<BlockPos, BlockState, ? extends BlockEntity> blockEntity) {
+        // Use forge's IClientItemExtensions to render block entity items
+        return this.registerItem(name, () -> new BlockEntityItem(block.get(), blockEntity::apply, new Item.Properties()));
+    }
 
     @Override
     public <T extends Entity> Supplier<EntityType<T>> registerEntity(String name, EntityType.Builder<T> builder) {

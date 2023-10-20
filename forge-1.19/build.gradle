@@ -42,6 +42,7 @@ dependencies {
 mixin {
     add sourceSets.main, "mixin.undergroundjungle.refmap.json"
     config "mixin.undergroundjungle.json"
+    config "mixin.undergroundjungle.forge.json"
 }
 
 tasks.withType(JavaCompile).configureEach {

@@ -42,7 +42,7 @@ public final class RegistryManager {
     public static final Supplier<StairBlock> TEMPLE_BRICK_TILE_STAIRS = REGISTRY.registerStairs("temple_brick_tile_stairs", TEMPLE_BRICK_TILES);
     public static final Supplier<SlabBlock> TEMPLE_BRICK_TILE_SLAB = REGISTRY.registerSlab("temple_brick_tile_slab", TEMPLE_BRICK_TILES);
     public static final Supplier<WallBlock> TEMPLE_BRICK_TILE_WALL = REGISTRY.registerWall("temple_brick_tile_wall", TEMPLE_BRICK_TILES);
-    public static final Supplier<TempleChestBlock> TEMPLE_CHEST = REGISTRY.registerBlockAndItem("temple_chest", () -> new TempleChestBlock(BlockBehaviour.Properties.copy(TEMPLE_BRICKS.get()).strength(-1.0f, 3600000.0f).noLootTable()));
+    public static final Supplier<TempleChestBlock> TEMPLE_CHEST = REGISTRY.registerBlock("temple_chest", () -> new TempleChestBlock(BlockBehaviour.Properties.copy(TEMPLE_BRICKS.get()).strength(-1.0f, 3600000.0f).noLootTable()));
     public static final Supplier<JungleVinesPlantBlock> JUNGLE_VINES_PLANT = REGISTRY.registerBlock("jungle_vines_plant", () -> new JungleVinesPlantBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.CAVE_VINES)));
     public static final Supplier<JungleVinesBlock> JUNGLE_VINES = REGISTRY.registerBlockAndItem("jungle_vines", () -> new JungleVinesBlock(BlockBehaviour.Properties.copy(JUNGLE_VINES_PLANT.get())));
 
@@ -54,7 +54,7 @@ public final class RegistryManager {
     public static final Supplier<AxeItem> TEMPLE_AXE = REGISTRY.registerItem("temple_axe", () -> new ModAxeItem(ModToolTier.TEMPLE, 5.0f, -3.0f, new Item.Properties()));
     public static final Supplier<HoeItem> TEMPLE_HOE = REGISTRY.registerItem("temple_hoe", () -> new ModHoeItem(ModToolTier.TEMPLE, -3, 0.0f, new Item.Properties()));
 
-    public static final Supplier<BlockEntityType<TempleChestBlockEntity>> TEMPLE_CHEST_ENTITY = REGISTRY.registerBlockEntity("temple_chest", TEMPLE_CHEST, TempleChestBlockEntity::new);
+    public static final Supplier<BlockEntityType<TempleChestBlockEntity>> TEMPLE_CHEST_ENTITY = REGISTRY.registerBlockEntityAndItem("temple_chest", TEMPLE_CHEST, TempleChestBlockEntity::new);
 
     public static final Supplier<EntityType<JungleZombie>> JUNGLE_ZOMBIE = REGISTRY.registerEntity("jungle_zombie", EntityType.Builder.of(JungleZombie::new, MobCategory.MONSTER).sized(0.6f, 1.95f).clientTrackingRange(8));
     public static final Supplier<EntityType<MossySkeleton>> MOSSY_SKELETON = REGISTRY.registerEntity("mossy_skeleton", EntityType.Builder.of(MossySkeleton::new, MobCategory.MONSTER).sized(0.6f, 1.99f).clientTrackingRange(8));

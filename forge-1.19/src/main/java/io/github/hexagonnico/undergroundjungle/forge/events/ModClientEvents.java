@@ -3,6 +3,7 @@ package io.github.hexagonnico.undergroundjungle.forge.events;
 import io.github.hexagonnico.undergroundjungle.RegistryManager;
 import io.github.hexagonnico.undergroundjungle.renderers.JungleZombieRenderer;
 import io.github.hexagonnico.undergroundjungle.renderers.MossySkeletonRenderer;
+import net.minecraft.client.renderer.blockentity.ChestRenderer;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -59,12 +60,13 @@ public class ModClientEvents {
     }
 
     /**
-     * Registers entity renderers.
+     * Registers entity and block entity renderers.
      *
      * @param event Register renderers event
      */
     @SubscribeEvent
     public static void registerRenders(EntityRenderersEvent.RegisterRenderers event) {
+        event.registerBlockEntityRenderer(RegistryManager.TEMPLE_CHEST_ENTITY.get(), ChestRenderer::new);
         event.registerEntityRenderer(RegistryManager.JUNGLE_ZOMBIE.get(), JungleZombieRenderer::new);
         event.registerEntityRenderer(RegistryManager.MOSSY_SKELETON.get(), MossySkeletonRenderer::new);
     }
