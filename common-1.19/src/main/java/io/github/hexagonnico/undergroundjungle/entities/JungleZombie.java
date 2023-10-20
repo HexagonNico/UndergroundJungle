@@ -5,28 +5,34 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.Zombie;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Jungle zombie entity extending the default zombie.
+ *
+ * @author Nico
+ */
 public class JungleZombie extends Zombie {
 
-    public static AttributeSupplier.Builder attributes() {
-        return Mob.createMobAttributes()
-            .add(Attributes.MAX_HEALTH, 20.0)
-            .add(Attributes.FOLLOW_RANGE, 32.0)
-            .add(Attributes.MOVEMENT_SPEED, 0.25)
-            .add(Attributes.ATTACK_DAMAGE, 3.0)
-            .add(Attributes.KNOCKBACK_RESISTANCE, 0.0)
-            .add(Attributes.ARMOR, 2.0)
-            .add(Attributes.SPAWN_REINFORCEMENTS_CHANCE, 0.1);
-    }
-
+    /**
+     * Constructs the entity.
+     *
+     * @param type Entity type
+     * @param world World
+     */
     public JungleZombie(EntityType<? extends Zombie> type, Level world) {
         super(type, world);
+    }
+
+    @Override
+    public boolean canBeAffected(MobEffectInstance effect) {
+        if(effect.getEffect().equals(MobEffects.POISON)) {
+            return false;
+        }
+        return super.canBeAffected(effect);
     }
 
     @Override
@@ -36,5 +42,10 @@ public class JungleZombie extends Zombie {
             livingEntity.addEffect(new MobEffectInstance(MobEffects.POISON, 60), this);
         }
         return flag;
+    }
+
+    @Override
+    protected @NotNull ItemStack getSkull() {
+        return ItemStack.EMPTY;
     }
 }

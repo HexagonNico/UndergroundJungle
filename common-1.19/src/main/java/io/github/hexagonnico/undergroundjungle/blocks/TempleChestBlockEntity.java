@@ -90,6 +90,7 @@ public class TempleChestBlockEntity extends RandomizableContainerBlockEntity imp
         compoundTag.putBoolean("unlocked", this.unlocked);
     }
 
+    @SuppressWarnings("unused")
     public static void lidAnimateTick(Level world, BlockPos pos, BlockState state, TempleChestBlockEntity blockEntity) {
         blockEntity.lidController.tickLid();
     }

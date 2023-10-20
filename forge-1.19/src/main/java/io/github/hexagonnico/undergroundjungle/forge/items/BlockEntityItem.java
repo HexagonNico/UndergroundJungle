@@ -1,4 +1,4 @@
-package io.github.hexagonnico.undergroundjungle.forge;
+package io.github.hexagonnico.undergroundjungle.forge.items;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
