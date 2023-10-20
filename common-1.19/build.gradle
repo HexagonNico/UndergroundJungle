@@ -3,7 +3,6 @@ plugins {
     id 'java'
     id 'maven-publish'
     id 'org.spongepowered.gradle.vanilla' version '0.2.1-SNAPSHOT'
-//    id 'org.spongepowered.mixin' version "0.7.+"
 }
 
 base {
@@ -11,16 +10,10 @@ base {
 }
 
 minecraft {
-    version('1.19.4')
+    version '1.19.4'
 }
 
 dependencies {
-    compileOnly group:'org.spongepowered', name:'mixin', version:'0.8.5'
+    compileOnly 'org.spongepowered:mixin:0.8.5'
     implementation project(':common')
-//    annotationProcessor("org.spongepowered:mixin:0.8.5-SNAPSHOT:processor")
 }
-
-//mixin {
-//    add sourceSets.main, "mixins.undergroundjungle.refmap.json"
-//    config "mixins.undergroundjungle.json"
-//}
