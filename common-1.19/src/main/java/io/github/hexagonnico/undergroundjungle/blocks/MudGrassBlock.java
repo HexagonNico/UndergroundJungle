@@ -22,10 +22,21 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.lighting.LayerLightEngine;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Grass block that can spread through mud blocks.
+ *
+ * @author Nico
+ */
 public class MudGrassBlock extends Block implements BonemealableBlock {
 
+    /** Feature to place when the block is bonemealed */
     private final ResourceKey<ConfiguredFeature<?, ?>> bonemealFeature;
 
+    /**
+     * Constructs a mud grass block.
+     *
+     * @param properties Block behaviour properties
+     */
     public MudGrassBlock(Properties properties) {
         super(properties);
         this.bonemealFeature = ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation("underground_jungle", "jungle_vegetation"));
@@ -48,10 +59,26 @@ public class MudGrassBlock extends Block implements BonemealableBlock {
         }
     }
 
+    /**
+     * Checks if grass can propagate to the given position.
+     *
+     * @param blockState Block default state
+     * @param world World
+     * @param pos Position to which grass could propagate
+     * @return True if grass can propagate, otherwise false
+     */
     private static boolean canPropagate(BlockState blockState, LevelReader world, BlockPos pos) {
         return canBeGrass(blockState, world, pos) && !world.getFluidState(pos.above()).is(FluidTags.WATER);
     }
 
+    /**
+     * Checks if the given block state can be grass at the given position.
+     *
+     * @param blockState Block default state
+     * @param world World
+     * @param pos The block's position
+     * @return True if this block can be grass, otherwise false
+     */
     private static boolean canBeGrass(BlockState blockState, LevelReader world, BlockPos pos) {
         BlockPos posAbove = pos.above();
         BlockState blockStateAbove = world.getBlockState(posAbove);

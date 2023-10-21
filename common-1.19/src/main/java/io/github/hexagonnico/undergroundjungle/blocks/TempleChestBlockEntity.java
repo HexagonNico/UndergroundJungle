@@ -24,10 +24,17 @@ import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Temple chest block entity.
+ *
+ * @author Nico
+ */
 public class TempleChestBlockEntity extends RandomizableContainerBlockEntity implements LidBlockEntity, WorldlyContainer {
 
+    /** Holds the chest's inventory */
     private NonNullList<ItemStack> items = NonNullList.withSize(27, ItemStack.EMPTY);
 
+    /** Keeps track of how many players are opening the chest */
     private final ContainerOpenersCounter openersCounter = new ContainerOpenersCounter() {
         @Override
         protected void onOpen(@NotNull Level world, @NotNull BlockPos pos, @NotNull BlockState state) {
@@ -53,10 +60,18 @@ public class TempleChestBlockEntity extends RandomizableContainerBlockEntity imp
         }
     };
 
+    /** Controls the chest's animation */
     private final ChestLidController lidController = new ChestLidController();
 
+    /** Set to true when the chest is unlocked with the temple key */
     private boolean unlocked = false;
 
+    /**
+     * Constructs a temple chest block entity.
+     *
+     * @param pos Position
+     * @param state Block state
+     */
     public TempleChestBlockEntity(BlockPos pos, BlockState state) {
         super(RegistryManager.TEMPLE_CHEST_ENTITY.get(), pos, state);
     }
@@ -90,6 +105,15 @@ public class TempleChestBlockEntity extends RandomizableContainerBlockEntity imp
         compoundTag.putBoolean("unlocked", this.unlocked);
     }
 
+    /**
+     * Advances the lid animation by one tick.
+     * Needed to access {@link TempleChestBlockEntity#lidController} from {@link TempleChestBlock}.
+     *
+     * @param world World
+     * @param pos Position
+     * @param state Block state
+     * @param blockEntity This block entity
+     */
     @SuppressWarnings("unused")
     public static void lidAnimateTick(Level world, BlockPos pos, BlockState state, TempleChestBlockEntity blockEntity) {
         blockEntity.lidController.tickLid();
@@ -125,6 +149,12 @@ public class TempleChestBlockEntity extends RandomizableContainerBlockEntity imp
         }
     }
 
+    /**
+     * Attempts to unlock the temple chest by checking if the player is holding a temple key.
+     *
+     * @param player The player entity
+     * @param hand The player's interaction hand
+     */
     public void tryUnlock(Player player, InteractionHand hand) {
         if(!this.unlocked) {
             ItemStack itemInHand = player.getItemInHand(hand);

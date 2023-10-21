@@ -9,8 +9,18 @@ import net.minecraft.world.level.block.GrowingPlantHeadBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Block representing the tip of jungle vines.
+ *
+ * @author Nico
+ */
 public class JungleVinesBlock extends GrowingPlantHeadBlock {
 
+    /**
+     * Constructs a jungle vines block.
+     *
+     * @param properties Block behaviour properties
+     */
     public JungleVinesBlock(Properties properties) {
         super(properties, Direction.DOWN, CaveVines.SHAPE, false, 0.1);
     }

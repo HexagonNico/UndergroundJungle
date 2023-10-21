@@ -30,10 +30,21 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+/**
+ * Temple chest block class.
+ *
+ * @author Nico
+ */
 public class TempleChestBlock extends AbstractChestBlock<TempleChestBlockEntity> implements SimpleWaterloggedBlock {
 
+    /** Chest shape */
     private static final VoxelShape SHAPE = Block.box(1.0, 0.0, 1.0, 15.0, 14.0, 15.0);
 
+    /**
+     * Constructs a temple chest block.
+     *
+     * @param properties Block behaviour properties
+     */
     public TempleChestBlock(Properties properties) {
         super(properties, RegistryManager.TEMPLE_CHEST_ENTITY::get);
         this.registerDefaultState(this.getStateDefinition().any().setValue(HorizontalDirectionalBlock.FACING, Direction.NORTH).setValue(BlockStateProperties.WATERLOGGED, false));

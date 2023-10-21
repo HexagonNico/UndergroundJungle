@@ -14,6 +14,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.function.Consumer;
 
+/**
+ * Mixin class for {@link OverworldBiomeBuilder}.
+ * Used to make the underground jungle biome generate in the overworld.
+ *
+ * @author Nico
+ */
 @Mixin(OverworldBiomeBuilder.class)
 @SuppressWarnings("unused")
 public class OverworldBiomeBuilderMixin {
@@ -31,6 +37,12 @@ public class OverworldBiomeBuilderMixin {
     private static final float WEIRDNESS_MIN = 0.0f;
     private static final float WEIRDNESS_MAX = 1.0f;
 
+    /**
+     * Adds the underground jungle biome to the overworld biome manager.
+     *
+     * @param consumer Climate parameters and biome key consumer
+     * @param ci Mixin callback info
+     */
     @Inject(at = @At("RETURN"), method = "addUndergroundBiomes")
     public void addUndergroundBiomes(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> consumer, CallbackInfo ci) {
         ResourceKey<Biome> undergroundJungleKey = ResourceKey.create(Registries.BIOME, new ResourceLocation("underground_jungle", "underground_jungle"));
