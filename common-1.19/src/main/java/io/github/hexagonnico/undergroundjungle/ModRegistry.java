@@ -192,7 +192,7 @@ public interface ModRegistry {
      * @return A supplier returning the registered block entity
      * @param <T> The block entity's class
      */
-    <T extends BlockEntity> Supplier<BlockEntityType<T>> registerBlockEntity(String name, Supplier<? extends Block> block, BiFunction<BlockPos, BlockState, T> blockEntity);
+    <T extends BlockEntity> Supplier<BlockEntityType<? extends T>> registerBlockEntity(String name, Supplier<? extends Block> block, BiFunction<BlockPos, BlockState, T> blockEntity);
 
     /**
      * Registers a {@link BlockItem} for a block entity.
@@ -218,8 +218,8 @@ public interface ModRegistry {
      * @return A supplier returning the registered block entity
      * @param <T> The block entity's class
      */
-    default <T extends BlockEntity> Supplier<BlockEntityType<T>> registerBlockEntityAndItem(String name, Supplier<? extends Block> block, BiFunction<BlockPos, BlockState, T> blockEntity) {
-        Supplier<BlockEntityType<T>> blockEntityType = this.registerBlockEntity(name, block, blockEntity);
+    default <T extends BlockEntity> Supplier<BlockEntityType<? extends T>> registerBlockEntityAndItem(String name, Supplier<? extends Block> block, BiFunction<BlockPos, BlockState, T> blockEntity) {
+        Supplier<BlockEntityType<? extends T>> blockEntityType = this.registerBlockEntity(name, block, blockEntity);
         this.registerBlockEntityItem(name, block, blockEntity);
         return blockEntityType;
     }

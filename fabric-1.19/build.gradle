@@ -1,0 +1,60 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id 'fabric-loom' version '0.12-SNAPSHOT'
+}
+
+base {
+    version = '1.1-fabric'
+    group = 'io.github.hexagonnico.undergroundjungle'
+    archivesName = "undergroundjungle-1.19"
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:1.19.4"
+    mappings loom.officialMojangMappings()
+    modImplementation "net.fabricmc:fabric-loader:0.14.23"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:0.87.1+1.19.4"
+    implementation project(":common-1.19")
+    implementation project(":common")
+}
+
+loom {
+    mixin {
+        defaultRefmapName.set "mixin.undergroundjungle.refmap.json"
+    }
+    runs {
+        client {
+            client()
+            setConfigName("fabric-1.19")
+            ideConfigGenerated(true)
+            runDir("../run")
+        }
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    source project(":common").sourceSets.main.allSource
+    source project(":common-1.19").sourceSets.main.allSource
+}
+
+processResources {
+    from project(":common").sourceSets.main.resources
+    from project(":common-1.19").sourceSets.main.resources
+}
+
+jar {
+    manifest {
+        attributes([
+            "Specification-Title": 'underground_jungle',
+            "Specification-Vendor": 'HexagonNico',
+            "Specification-Version": project.version,
+            "Implementation-Title": project.name,
+            "Implementation-Version": project.jar.archiveVersion,
+            "Implementation-Vendor": 'HexagonNico',
+            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+        ])
+    }
+}
+
+jar.finalizedBy('reobfJar')

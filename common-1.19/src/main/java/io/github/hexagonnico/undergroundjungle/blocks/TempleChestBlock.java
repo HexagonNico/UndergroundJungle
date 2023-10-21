@@ -46,7 +46,7 @@ public class TempleChestBlock extends AbstractChestBlock<TempleChestBlockEntity>
      * @param properties Block behaviour properties
      */
     public TempleChestBlock(Properties properties) {
-        super(properties, RegistryManager.TEMPLE_CHEST_ENTITY::get);
+        super(properties, RegistryManager.TEMPLE_CHEST_ENTITY);
         this.registerDefaultState(this.getStateDefinition().any().setValue(HorizontalDirectionalBlock.FACING, Direction.NORTH).setValue(BlockStateProperties.WATERLOGGED, false));
     }
 
