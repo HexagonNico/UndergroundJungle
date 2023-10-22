@@ -17,6 +17,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import java.util.function.BiFunction;
 import java.util.function.Supplier;
 
+/**
+ * Fabric implementation of the registry.
+ *
+ * @author Nico
+ */
 public class FabricRegistry implements ModRegistry {
 
     @Override
@@ -33,6 +38,7 @@ public class FabricRegistry implements ModRegistry {
 
     @Override
     public <T extends BlockEntity> Supplier<BlockEntityType<? extends T>> registerBlockEntity(String name, Supplier<? extends Block> block, BiFunction<BlockPos, BlockState, T> blockEntity) {
+        // Block entity types must be created here because BlockEntityType.BlockEntitySupplier has private access in the common module
         BlockEntityType<T> registered = Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, new ResourceLocation("underground_jungle", name), FabricBlockEntityTypeBuilder.create(blockEntity::apply, block.get()).build());
         return () -> registered;
     }

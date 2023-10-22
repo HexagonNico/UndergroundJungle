@@ -12,10 +12,13 @@
     "sources": "https://github.com/HexagonNico/UndergroundJungle"
   },
   "license": "CC BY-NC-ND 4.0",
-  "icon": "assets/underground_jungle/icon.png",
+  "icon": "icon.png",
   "entrypoints": {
     "main": [
       "io.github.hexagonnico.undergroundjungle.fabric.FabricInitializer"
+    ],
+    "client": [
+      "io.github.hexagonnico.undergroundjungle.fabric.FabricClientInitializer"
     ]
   },
   "mixins": [
