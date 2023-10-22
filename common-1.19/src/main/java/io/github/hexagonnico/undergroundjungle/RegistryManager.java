@@ -43,8 +43,8 @@ public final class RegistryManager {
     public static final Supplier<SlabBlock> TEMPLE_BRICK_TILE_SLAB = REGISTRY.registerSlab("temple_brick_tile_slab", TEMPLE_BRICK_TILES);
     public static final Supplier<WallBlock> TEMPLE_BRICK_TILE_WALL = REGISTRY.registerWall("temple_brick_tile_wall", TEMPLE_BRICK_TILES);
     public static final Supplier<TempleChestBlock> TEMPLE_CHEST = REGISTRY.registerBlock("temple_chest", () -> new TempleChestBlock(BlockBehaviour.Properties.copy(TEMPLE_BRICKS.get()).strength(-1.0f, 3600000.0f).noLootTable()));
-    public static final Supplier<JungleVinesPlantBlock> JUNGLE_VINES_PLANT = REGISTRY.registerBlock("jungle_vines_plant", () -> new JungleVinesPlantBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.CAVE_VINES)));
-    public static final Supplier<JungleVinesBlock> JUNGLE_VINES = REGISTRY.registerBlockAndItem("jungle_vines", () -> new JungleVinesBlock(BlockBehaviour.Properties.copy(JUNGLE_VINES_PLANT.get())));
+    public static final Supplier<JungleVinesBlock> JUNGLE_VINES = REGISTRY.registerBlockAndItem("jungle_vines", () -> new JungleVinesBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.CAVE_VINES)));
+    public static final Supplier<JungleVinesPlantBlock> JUNGLE_VINES_PLANT = REGISTRY.registerBlock("jungle_vines_plant", () -> new JungleVinesPlantBlock(BlockBehaviour.Properties.copy(JUNGLE_VINES.get()).lightLevel(JungleVinesPlantBlock.lightLevel(8))));
 
     public static final Supplier<Item> TEMPLE_KEY = REGISTRY.registerItem("temple_key", () -> new Item(new Item.Properties().stacksTo(1)));
 

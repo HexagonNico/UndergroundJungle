@@ -1,7 +1,10 @@
 {
   "variants": {
-    "": {
+    "spores=false": {
       "model": "underground_jungle:block/jungle_vines_plant"
+    },
+    "spores=true": {
+      "model": "underground_jungle:block/jungle_vines_spores"
     }
   }
 }

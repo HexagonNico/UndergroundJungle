@@ -44,13 +44,27 @@
           ]
         },
         "provider": {
-          "type": "minecraft:simple_state_provider",
-          "state": {
-            "Name": "underground_jungle:jungle_vines_plant",
-            "Properties": {
-              "berries": "false"
+          "type": "minecraft:weighted_state_provider",
+          "entries": [
+            {
+              "data": {
+                "Name": "underground_jungle:jungle_vines_plant",
+                "Properties": {
+                  "spores": "false"
+                }
+              },
+              "weight": 2
+            },
+            {
+              "data": {
+                "Name": "underground_jungle:jungle_vines_plant",
+                "Properties": {
+                  "spores": "true"
+                }
+              },
+              "weight": 1
             }
-          }
+          ]
         }
       },
       {
