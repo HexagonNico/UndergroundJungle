@@ -5,3 +5,9 @@ plugins {
 base {
     archivesName = "undergroundjungle-common"
 }
+
+java {
+    toolchain {
+        JavaLanguageVersion.of(17)
+    }
+}

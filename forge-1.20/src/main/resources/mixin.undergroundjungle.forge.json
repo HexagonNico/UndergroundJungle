@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "io.github.hexagonnico.undergroundjungle.forge.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "minVersion": "0.8",
+  "refmap": "mixin.undergroundjungle.refmap.json",
+  "mixins": [
+    "TempleChestBlockEntityMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -6,9 +6,9 @@ plugins {
 }
 
 base {
-    version = '1.1-forge'
+    version = '2.1-forge'
     group = 'io.github.hexagonnico.undergroundjungle'
-    archivesName = "undergroundjungle-1.19"
+    archivesName = "undergroundjungle-1.20"
 }
 
 java {
@@ -18,7 +18,7 @@ java {
 }
 
 minecraft {
-    mappings channel: 'official', version: '1.19.4'
+    mappings channel: 'official', version: '1.20.1'
 
     runs {
         client {
@@ -39,8 +39,8 @@ minecraft {
 sourceSets.main.resources.srcDir 'src/generated/resources'
 
 dependencies {
-    minecraft "net.minecraftforge:forge:1.19.4-45.2.0"
-    compileOnly project(":common-1.19")
+    minecraft "net.minecraftforge:forge:1.20.1-47.2.0"
+    compileOnly project(":common-1.20")
     compileOnly project(":common")
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
@@ -53,12 +53,12 @@ mixin {
 
 tasks.withType(JavaCompile).configureEach {
     source project(":common").sourceSets.main.allSource
-    source project(":common-1.19").sourceSets.main.allSource
+    source project(":common-1.20").sourceSets.main.allSource
 }
 
 processResources {
     from project(":common").sourceSets.main.resources
-    from project(":common-1.19").sourceSets.main.resources
+    from project(":common-1.20").sourceSets.main.resources
 }
 
 jar {

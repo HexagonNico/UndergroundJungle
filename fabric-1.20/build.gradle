@@ -5,9 +5,9 @@ plugins {
 }
 
 base {
-    version = '1.1-fabric'
+    version = '2.1-fabric'
     group = 'io.github.hexagonnico.undergroundjungle'
-    archivesName = "undergroundjungle-1.19"
+    archivesName = "undergroundjungle-1.20"
 }
 
 java {
@@ -17,11 +17,11 @@ java {
 }
 
 dependencies {
-    minecraft "com.mojang:minecraft:1.19.4"
+    minecraft "com.mojang:minecraft:1.20.1"
     mappings loom.officialMojangMappings()
     modImplementation "net.fabricmc:fabric-loader:0.14.23"
-    modImplementation "net.fabricmc.fabric-api:fabric-api:0.87.1+1.19.4"
-    implementation project(":common-1.19")
+    modImplementation "net.fabricmc.fabric-api:fabric-api:0.90.4+1.20.1"
+    implementation project(":common-1.20")
     implementation project(":common")
 }
 
@@ -32,7 +32,7 @@ loom {
     runs {
         client {
             client()
-            setConfigName("fabric-1.19")
+            setConfigName("fabric-1.20")
             ideConfigGenerated(true)
             runDir("../run")
         }
@@ -41,12 +41,12 @@ loom {
 
 tasks.withType(JavaCompile).configureEach {
     source project(":common").sourceSets.main.allSource
-    source project(":common-1.19").sourceSets.main.allSource
+    source project(":common-1.20").sourceSets.main.allSource
 }
 
 processResources {
     from project(":common").sourceSets.main.resources
-    from project(":common-1.19").sourceSets.main.resources
+    from project(":common-1.20").sourceSets.main.resources
 }
 
 jar {

@@ -12,7 +12,7 @@
       "spawns": [
         {
           "type": "underground_jungle:mossy_skeleton",
-          "maxCount": 2,
+          "maxCount": 1,
           "minCount": 1,
           "weight": 1
         }
