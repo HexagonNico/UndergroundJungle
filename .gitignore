@@ -1,4 +1,9 @@
-# eclipse
+# Java
+*.class
+hs_err_pid*
+
+# Eclipse
+eclipse
 bin
 *.launch
 .settings
@@ -6,20 +11,22 @@ bin
 .classpath
 .project
 
-# idea
+# Intellij Idea
 out
 *.ipr
 *.iws
 *.iml
 .idea
 
-# gradle
+# Gradle
 build
 .gradle
 
-# other
-eclipse
+# VS Code
+.vscode/
+
+# Run environment
 run
 
-# Files from Forge MDK
+# Forge
 forge*changelog.txt
