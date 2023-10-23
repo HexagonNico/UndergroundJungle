@@ -1,21 +1,9 @@
 {
-  "feature": "underground_jungle:trees_underground_jungle",
+  "feature": "underground_jungle:huge_mushrooms",
   "placement": [
     {
       "type": "minecraft:count",
-      "count": {
-        "type": "minecraft:weighted_list",
-        "distribution": [
-          {
-            "data": 80,
-            "weight": 9
-          },
-          {
-            "data": 81,
-            "weight": 1
-          }
-        ]
-      }
+      "count": 128
     },
     {
       "type": "minecraft:in_square"

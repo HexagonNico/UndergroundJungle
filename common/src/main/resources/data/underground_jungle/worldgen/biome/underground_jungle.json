@@ -82,7 +82,9 @@
       "minecraft:spore_blossom",
       "underground_jungle:underground_jungle_vegetation",
       "underground_jungle:vines_extra",
-      "underground_jungle:trees_underground_jungle",
+      "underground_jungle:jungle_trees",
+      "underground_jungle:jungle_oak_trees",
+      "underground_jungle:huge_mushrooms",
       "underground_jungle:jungle_vines"
     ],
     [
