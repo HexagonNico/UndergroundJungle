@@ -30,3 +30,7 @@ run
 
 # Forge
 forge*changelog.txt
+
+# Directories
+.DS_Store
+.directory
