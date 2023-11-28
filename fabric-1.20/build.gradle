@@ -5,7 +5,7 @@ plugins {
 }
 
 base {
-    version = '2.1.1-fabric'
+    version = '2.1.2-fabric'
     group = 'io.github.hexagonnico.undergroundjungle'
     archivesName = "undergroundjungle-1.20"
 }
