@@ -38,6 +38,12 @@ Chiseled Temple Bricks texture by [Matriax](https://opengameart.org/content/inca
 
 Ukrainian translation by [Un roman](https://github.com/unroman)
 
+Simplified Chinese Translation by [junshengxie](https://github.com/junshengxie)
+
+### Check out my other mods
+
+* [Spider Caves](https://github.com/HexagonNico/SpiderCaves): Adds a spider cave biome and a spider armor
+
 ## License
 
 This mod is licensed under Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International.
