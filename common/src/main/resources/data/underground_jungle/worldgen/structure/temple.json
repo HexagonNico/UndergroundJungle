@@ -4,7 +4,13 @@
   "max_distance_from_center": 116,
   "size": 1,
   "start_height": {
-    "absolute": -27
+    "type": "minecraft:uniform",
+    "max_inclusive": {
+      "absolute": 32
+    },
+    "min_inclusive": {
+      "absolute": -16
+    }
   },
   "spawn_overrides": {
     "monster": {
