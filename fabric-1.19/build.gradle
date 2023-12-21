@@ -16,6 +16,15 @@ java {
     }
 }
 
+repositories {
+    maven {
+        url = 'https://maven.minecraftforge.net/'
+    }
+    maven {
+        url "https://cursemaven.com"
+    }
+}
+
 dependencies {
     minecraft "com.mojang:minecraft:1.19.4"
     mappings loom.officialMojangMappings()
@@ -23,6 +32,9 @@ dependencies {
     modImplementation "net.fabricmc.fabric-api:fabric-api:0.87.1+1.19.4"
     implementation project(":common-1.19")
     implementation project(":common")
+    // Optional TerraBlender dependency
+    modImplementation 'com.github.glitchfiend:TerraBlender-fabric:1.19.4-2.3.0.22'
+    modRuntimeOnly "curse.maven:terralith-513688:4823707"
 }
 
 loom {

@@ -12,10 +12,9 @@ public class IntegrationHelper {
         if(PlatformHelper.isModLoaded("terrablender")) try {
             Class<?> regionClass = Class.forName("terrablender.api.Region");
             Method registerMethod = Class.forName("terrablender.api.Regions").getMethod("register", regionClass);
-            Object regionInstance = Class.forName("io.github.hexagonnico.undergroundjungle.forge.terrablender.UndergroundJungleRegion").getConstructor().newInstance();
+            Object regionInstance = Class.forName("io.github.hexagonnico.undergroundjungle.integration.terrablender.UndergroundJungleRegion").getConstructor().newInstance();
             registerMethod.invoke(null, regionInstance);
-        } catch (IllegalAccessException | InstantiationException | NoSuchMethodException | ClassNotFoundException |
-                 InvocationTargetException e) {
+        } catch (IllegalAccessException | InstantiationException | NoSuchMethodException | ClassNotFoundException | InvocationTargetException e) {
             throw new RuntimeException(e);
         }
     }
