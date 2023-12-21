@@ -31,7 +31,8 @@ public class UndergroundJungleRegion extends Region {
             .humidity(UndergroundJungleClimate.HUMIDITY)
             .continentalness(UndergroundJungleClimate.CONTINENTALNESS)
             .erosion(UndergroundJungleClimate.EROSION)
-            .depth(UndergroundJungleClimate.DEPTH)
+            // Must be deeper because terralith can cause the biome to generate on the surface
+            .depth(Climate.Parameter.span(0.4f, 1.0f))
             .weirdness(UndergroundJungleClimate.WEIRDNESS)
             .build().forEach(point -> vanillaParameterOverlayBuilder.add(point, UNDERGROUND_JUNGLE_BIOME));
         vanillaParameterOverlayBuilder.build().forEach(mapper);

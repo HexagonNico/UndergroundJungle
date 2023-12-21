@@ -34,7 +34,7 @@ dependencies {
     implementation project(":common")
     // Optional TerraBlender dependency
     modImplementation 'com.github.glitchfiend:TerraBlender-fabric:1.19.4-2.3.0.22'
-    modRuntimeOnly "curse.maven:terralith-513688:4823707"
+    modRuntimeOnly 'curse.maven:terralith-513688:4823707'
 }
 
 loom {

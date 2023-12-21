@@ -54,7 +54,7 @@ dependencies {
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
     // Optional TerraBlender dependency
     implementation fg.deobf('com.github.glitchfiend:TerraBlender-forge:1.19.4-2.3.0.22')
-    runtimeOnly fg.deobf("curse.maven:terralith-513688:4823707")
+    runtimeOnly fg.deobf('curse.maven:terralith-513688:4823707')
 }
 
 mixin {
