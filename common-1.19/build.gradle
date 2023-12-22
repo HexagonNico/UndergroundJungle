@@ -19,7 +19,19 @@ minecraft {
     version '1.19.4'
 }
 
+repositories {
+    maven {
+        url = 'https://maven.minecraftforge.net/'
+    }
+    maven {
+        url "https://cursemaven.com"
+    }
+}
+
 dependencies {
     compileOnly 'org.spongepowered:mixin:0.8.5'
     implementation project(':common')
+    // Optional TerraBlender dependency
+    implementation 'com.github.glitchfiend:TerraBlender-common:1.19.4-2.3.0.22'
+    runtimeOnly 'curse.maven:terralith-513688:4823707'
 }

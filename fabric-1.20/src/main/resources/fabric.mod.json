@@ -19,6 +19,9 @@
     ],
     "client": [
       "io.github.hexagonnico.undergroundjungle.fabric.FabricClientInitializer"
+    ],
+    "terrablender": [
+      "io.github.hexagonnico.undergroundjungle.fabric.integration.terrablender.TerraBlenderInitializer"
     ]
   },
   "mixins": [
