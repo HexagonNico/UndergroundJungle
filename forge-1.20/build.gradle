@@ -6,7 +6,7 @@ plugins {
 }
 
 base {
-    version = '2.2-forge'
+    version = '2.2.1-forge'
     group = 'io.github.hexagonnico.undergroundjungle'
     archivesName = "undergroundjungle-1.20"
 }
