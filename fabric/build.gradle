@@ -1,0 +1,64 @@
+plugins {
+    // Idea plugin
+    id 'idea'
+    // Fabric plugin
+    id 'fabric-loom' version '0.12-SNAPSHOT'
+}
+
+base {
+    // Archive name for the fabric mod
+    archivesName = 'underground-jungle-fabric'
+}
+
+loom {
+    // Specify mixin refmap
+    mixin {
+        defaultRefmapName.set "mixin.undergroundjungle.refmap.json"
+    }
+    // Fabric run configurations
+    runs {
+        client {
+            client()
+            ideConfigGenerated(true)
+            runDir('../.minecraft')
+        }
+    }
+}
+
+dependencies {
+    // Minecraft dependency
+    minecraft "com.mojang:minecraft:${minecraftVersion}"
+    mappings loom.officialMojangMappings()
+    // Fabric loader and api dependency
+    modImplementation "net.fabricmc:fabric-loader:${fabricVersion}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${fabricApiVersion}+${minecraftVersion}"
+    // Common module dependency
+    implementation project(':common')
+    // Phantom library dependency
+    modImplementation "io.github.phantomloader:library-fabric:${phantomVersion}"
+    annotationProcessor "io.github.phantomloader:processor-fabric:${phantomVersion}"
+}
+
+tasks.withType(JavaCompile).configureEach {
+    // Copy sources from the common module
+    source project(':common').sourceSets.main.allSource
+    // Pass options used by the annotation processor
+    options.compilerArgs.add "-AfabricVersion=${fabricVersion}"
+    options.compilerArgs.add "-AphantomVersion=${phantomVersion}"
+    options.compilerArgs.add "-AminecraftVersion=${minecraftVersion}"
+    options.compilerArgs.add "-AmodId=${modId}"
+    options.compilerArgs.add "-AmodGroupId=${modGroupId}"
+    options.compilerArgs.add "-AmodVersion=${modVersion}"
+    options.compilerArgs.add "-AmodName=${modName}"
+    options.compilerArgs.add "-AmodLicense=${modLicense}"
+    options.compilerArgs.add "-AmodVersion=${modVersion}"
+    options.compilerArgs.add "-AmodAuthors=${modAuthors}"
+    options.compilerArgs.add "-AmodDescription=${modDescription}"
+    options.compilerArgs.add "-AmodSource=${modSource}"
+    options.compilerArgs.add "-AmodMixin=${modMixin}"
+}
+
+processResources {
+    // Copy resources from the common module
+    from project(':common').sourceSets.main.resources
+}

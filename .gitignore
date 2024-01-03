@@ -25,11 +25,11 @@ build
 # VS Code
 .vscode/
 
-# Run environment
-run
+# Minecraft
+.minecraft/
 
-# Forge
-forge*changelog.txt
+# TODO: Temporary
+libs/
 
 # Directories
 .DS_Store

@@ -16,10 +16,6 @@ pluginManagement {
     }
 }
 
-plugins {
-    id 'org.gradle.toolchains.foojay-resolver-convention' version '0.5.0'
-}
+rootProject.name = 'UndergroundJungle'
 
-include('common')
-include('common-1.19', 'forge-1.19', 'fabric-1.19')
-include('common-1.20', 'forge-1.20', 'fabric-1.20')
+include 'common', 'forge', 'fabric'
