@@ -28,7 +28,7 @@ Modrinth: https://modrinth.com/mod/underground-jungle
 
 ### Additional information
 
-Versions past 19.x require the [Phantom Library](https://githuh.com/PhantomLoader/PhantomLoader)
+Versions past 19.x require the [Phantom Library](https://github.com/PhantomLoader/PhantomLoader)
 
 The Fabric version of this mod requires the [Fabric API](https://github.com/FabricMC)
 
