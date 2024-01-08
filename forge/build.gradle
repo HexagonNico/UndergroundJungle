@@ -87,7 +87,7 @@ jar {
     finalizedBy 'reobfJar'
 }
 
-var changelogFile = rootProject.file("changelog.md")
+var changelogFile = rootProject.file('changelog.md')
 var changelogText = changelogFile.exists() ? changelogFile.text : ''
 
 tasks.register('publishCurseForge', TaskPublishCurseForge) {
