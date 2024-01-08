@@ -2,7 +2,6 @@ package io.github.hexagonnico.undergroundjungle.mixin;
 
 import com.mojang.datafixers.util.Pair;
 import io.github.hexagonnico.undergroundjungle.UndergroundJungle;
-import io.github.hexagonnico.undergroundjungle.worldgen.UndergroundJungleClimate;
 import io.github.phantomloader.library.platform.PlatformHelper;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -27,6 +26,13 @@ import java.util.function.Consumer;
 @SuppressWarnings("unused")
 public class OverworldBiomeBuilderMixin {
 
+    private static final Climate.Parameter TEMPERATURE = Climate.Parameter.span(0.4f, 1.0f);
+    private static final Climate.Parameter HUMIDITY = Climate.Parameter.span(0.4f, 1.0f);
+    private static final Climate.Parameter CONTINENTALNESS = Climate.Parameter.span(0.5f, 1.0f);
+    private static final Climate.Parameter EROSION = Climate.Parameter.span(-1.0f, 1.0f);
+    private static final Climate.Parameter DEPTH = Climate.Parameter.span(0.2f, 0.9f);
+    private static final Climate.Parameter WEIRDNESS = Climate.Parameter.span(0.0f, 1.0f);
+
     /**
      * Adds the underground jungle biome to the overworld biome manager.
      *
@@ -37,15 +43,7 @@ public class OverworldBiomeBuilderMixin {
     public void addUndergroundBiomes(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> consumer, CallbackInfo ci) {
         if(!PlatformHelper.isModLoaded("terrablender")) {
             ResourceKey<Biome> undergroundJungleKey = ResourceKey.create(Registries.BIOME, new ResourceLocation(UndergroundJungle.modId(), "underground_jungle"));
-            Climate.ParameterPoint undergroundJungleClimate = Climate.parameters(
-                UndergroundJungleClimate.TEMPERATURE,
-                UndergroundJungleClimate.HUMIDITY,
-                UndergroundJungleClimate.CONTINENTALNESS,
-                UndergroundJungleClimate.EROSION,
-                UndergroundJungleClimate.DEPTH,
-                UndergroundJungleClimate.WEIRDNESS,
-                0.0f
-            );
+            Climate.ParameterPoint undergroundJungleClimate = Climate.parameters(TEMPERATURE, HUMIDITY, CONTINENTALNESS, EROSION, DEPTH, WEIRDNESS, 0.0f);
             consumer.accept(Pair.of(undergroundJungleClimate, undergroundJungleKey));
         }
     }
