@@ -36,7 +36,7 @@ public class OverworldBiomeBuilderMixin {
     @Inject(at = @At("RETURN"), method = "addUndergroundBiomes")
     public void addUndergroundBiomes(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> consumer, CallbackInfo ci) {
         if(!PlatformHelper.isModLoaded("terrablender")) {
-            ResourceKey<Biome> undergroundJungleKey = ResourceKey.create(Registries.BIOME, new ResourceLocation(UndergroundJungle.MOD_ID, "underground_jungle"));
+            ResourceKey<Biome> undergroundJungleKey = ResourceKey.create(Registries.BIOME, new ResourceLocation(UndergroundJungle.modId(), "underground_jungle"));
             Climate.ParameterPoint undergroundJungleClimate = Climate.parameters(
                 UndergroundJungleClimate.TEMPERATURE,
                 UndergroundJungleClimate.HUMIDITY,

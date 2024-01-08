@@ -7,11 +7,14 @@ import io.github.phantomloader.library.events.ClientEventHandler;
 import io.github.phantomloader.library.events.RegisterBlockEntityRenderersEvent;
 import io.github.phantomloader.library.events.RegisterEntityRenderersEvent;
 import io.github.phantomloader.library.utils.CreativeTabsUtils;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.ChestRenderer;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
 
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
@@ -61,5 +64,11 @@ public class ModClientEvents implements ClientEventHandler {
     public void registerEntityRenderers(RegisterEntityRenderersEvent event) {
         event.register(UndergroundJungle.JUNGLE_ZOMBIE.get(), JungleZombieRenderer::new);
         event.register(UndergroundJungle.MOSSY_SKELETON.get(), MossySkeletonRenderer::new);
+    }
+
+    @Override
+    public void registerBlockRenderType(BiConsumer<Supplier<? extends Block>, RenderType> event) {
+        event.accept(UndergroundJungle.JUNGLE_VINES_PLANT, RenderType.cutout());
+        event.accept(UndergroundJungle.JUNGLE_VINES, RenderType.cutout());
     }
 }

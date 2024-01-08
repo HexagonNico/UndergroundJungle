@@ -2,7 +2,7 @@ plugins {
     // Idea plugin
     id 'idea'
     // Fabric plugin
-    id 'fabric-loom' version '0.12-SNAPSHOT'
+    id 'fabric-loom' version '1.2-SNAPSHOT'
 }
 
 base {
@@ -23,6 +23,13 @@ loom {
             runDir('../.minecraft')
         }
     }
+    // Add the common module to the classpath to allow fabric to find resources
+    mods {
+        "${modId}" {
+            sourceSet sourceSets.main
+            sourceSet project(':common').sourceSets.main
+        }
+    }
 }
 
 dependencies {
@@ -35,8 +42,13 @@ dependencies {
     // Common module dependency
     implementation project(':common')
     // Phantom library dependency
-    modImplementation "io.github.phantomloader:library-fabric:${phantomVersion}"
+    modImplementation "curse.maven:phantom-loader-958545:5015762"
+    annotationProcessor "curse.maven:phantom-loader-958545:5015762"
+    annotationProcessor "net.fabricmc:fabric-loader:${fabricVersion}"
     annotationProcessor "io.github.phantomloader:processor-fabric:${phantomVersion}"
+    // Optional TerraBlender dependency
+    modImplementation "com.github.glitchfiend:TerraBlender-fabric:${minecraftVersion}-${terraBlenderVersion}"
+    annotationProcessor "com.github.glitchfiend:TerraBlender-fabric:${minecraftVersion}-${terraBlenderVersion}"
 }
 
 tasks.withType(JavaCompile).configureEach {

@@ -28,9 +28,6 @@ build
 # Minecraft
 .minecraft/
 
-# TODO: Temporary
-libs/
-
 # Directories
 .DS_Store
 .directory

@@ -35,9 +35,11 @@ dependencies {
     // Common module dependency
     implementation project(':common')
     // Phantom library dependency
-    implementation fg.deobf("io.github.phantomloader:library-forge:${phantomVersion}")
-    annotationProcessor fg.deobf("io.github.phantomloader:library-forge:${phantomVersion}")
+    implementation fg.deobf("curse.maven:phantom-loader-958545:5015763")
+    annotationProcessor fg.deobf("curse.maven:phantom-loader-958545:5015763")
     annotationProcessor "io.github.phantomloader:processor-forge:${phantomVersion}"
+    // Optional TerraBlender dependency
+    implementation fg.deobf("com.github.glitchfiend:TerraBlender-forge:${minecraftVersion}-${terraBlenderVersion}")
 }
 
 mixin {
@@ -64,7 +66,7 @@ tasks.withType(JavaCompile).configureEach {
     options.compilerArgs.add "-AmodAuthors=${modAuthors}"
     options.compilerArgs.add "-AmodDescription=${modDescription}"
     options.compilerArgs.add "-AmodSource=${modSource}"
-    options.compilerArgs.add "-AmodIssues=${modIssues}"
+    options.compilerArgs.add "-AissueTracker=${issueTracker}"
 }
 
 processResources {
