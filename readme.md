@@ -1,5 +1,5 @@
 
-![Underground Jungle](common/src/main/resources/logo.png)
+![Underground Jungle](forge/src/main/resources/logo.png)
 
 Underground Jungle is a mod that adds an underground jungle biome and an underground jungle temple.
 
@@ -28,6 +28,8 @@ Modrinth: https://modrinth.com/mod/underground-jungle
 
 ### Additional information
 
+Versions past 19.x require the [Phantom Library](https://github.com/PhantomLoader/PhantomLoader)
+
 The Fabric version of this mod requires the [Fabric API](https://github.com/FabricMC)
 
 ## Credits
@@ -35,10 +37,6 @@ The Fabric version of this mod requires the [Fabric API](https://github.com/Fabr
 Mod Author: [HexagonNico](https://github.com/HexagonNico)
 
 Chiseled Temple Bricks texture by [Matriax](https://opengameart.org/content/inca-tileset)
-
-Ukrainian translation by [Un roman](https://github.com/unroman)
-
-Simplified Chinese Translation by [junshengxie](https://github.com/junshengxie)
 
 ### Check out my other mods
 

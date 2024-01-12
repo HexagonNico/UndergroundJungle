@@ -25,11 +25,8 @@ build
 # VS Code
 .vscode/
 
-# Run environment
-run
-
-# Forge
-forge*changelog.txt
+# Minecraft
+.minecraft/
 
 # Directories
 .DS_Store
