@@ -48,8 +48,8 @@ dependencies {
     // Common module dependency
     implementation project(':common')
     // Phantom library dependency
-    modImplementation "curse.maven:phantom-loader-958545:5015762"
-    annotationProcessor "curse.maven:phantom-loader-958545:5015762"
+    modImplementation "curse.maven:phantom-loader-958545:5026342"
+    annotationProcessor "curse.maven:phantom-loader-958545:5026342"
     annotationProcessor "net.fabricmc:fabric-loader:${fabricVersion}"
     annotationProcessor "io.github.phantomloader:processor-fabric:${phantomVersion}"
     // Optional TerraBlender dependency

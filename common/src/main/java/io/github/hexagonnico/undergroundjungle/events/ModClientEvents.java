@@ -9,7 +9,6 @@ import io.github.phantomloader.library.events.RegisterEntityRenderersEvent;
 import io.github.phantomloader.library.utils.CreativeTabsUtils;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.ChestRenderer;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
@@ -21,8 +20,8 @@ import java.util.function.Supplier;
 public class ModClientEvents implements ClientEventHandler {
 
     @Override
-    public void addItemsToCreativeTab(ResourceKey<CreativeModeTab> resourceKey, Consumer<Supplier<? extends ItemLike>> event) {
-        if(resourceKey.equals(CreativeTabsUtils.BUILDING_BLOCKS)) {
+    public void addItemsToCreativeTab(CreativeModeTab creativeTab, Consumer<Supplier<? extends ItemLike>> event) {
+        if(creativeTab.equals(CreativeTabsUtils.BUILDING_BLOCKS)) {
             event.accept(UndergroundJungle.TEMPLE_BRICKS);
             event.accept(UndergroundJungle.CRACKED_TEMPLE_BRICKS);
             event.accept(UndergroundJungle.MOSSY_TEMPLE_BRICKS);
@@ -34,21 +33,21 @@ public class ModClientEvents implements ClientEventHandler {
             event.accept(UndergroundJungle.TEMPLE_BRICK_TILE_STAIRS);
             event.accept(UndergroundJungle.TEMPLE_BRICK_TILE_SLAB);
             event.accept(UndergroundJungle.TEMPLE_BRICK_TILE_WALL);
-        } else if(resourceKey.equals(CreativeTabsUtils.NATURAL_BLOCKS)) {
+        } else if(creativeTab.equals(CreativeTabsUtils.NATURAL_BLOCKS)) {
             event.accept(UndergroundJungle.JUNGLE_GRASS);
             event.accept(UndergroundJungle.JUNGLE_VINES);
-        } else if(resourceKey.equals(CreativeTabsUtils.FUNCTIONAL_BLOCKS)) {
+        } else if(creativeTab.equals(CreativeTabsUtils.FUNCTIONAL_BLOCKS)) {
             event.accept(UndergroundJungle.TEMPLE_CHEST);
-        } else if(resourceKey.equals(CreativeTabsUtils.TOOLS_AND_UTILITIES)) {
+        } else if(creativeTab.equals(CreativeTabsUtils.TOOLS_AND_UTILITIES)) {
             event.accept(UndergroundJungle.TEMPLE_KEY);
             event.accept(UndergroundJungle.TEMPLE_SHOVEL);
             event.accept(UndergroundJungle.TEMPLE_PICKAXE);
             event.accept(UndergroundJungle.TEMPLE_AXE);
             event.accept(UndergroundJungle.TEMPLE_HOE);
-        } else if(resourceKey.equals(CreativeTabsUtils.COMBAT)) {
+        } else if(creativeTab.equals(CreativeTabsUtils.COMBAT)) {
             event.accept(UndergroundJungle.TEMPLE_SWORD);
             event.accept(UndergroundJungle.TEMPLE_AXE);
-        } else if(resourceKey.equals(CreativeTabsUtils.SPAWN_EGGS)) {
+        } else if(creativeTab.equals(CreativeTabsUtils.SPAWN_EGGS)) {
             event.accept(UndergroundJungle.MOSSY_SKELETON_SPAWN_EGG);
             event.accept(UndergroundJungle.JUNGLE_ZOMBIE_SPAWN_EGG);
         }

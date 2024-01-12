@@ -41,8 +41,8 @@ dependencies {
     // Common module dependency
     implementation project(':common')
     // Phantom library dependency
-    implementation fg.deobf("curse.maven:phantom-loader-958545:5015763")
-    annotationProcessor fg.deobf("curse.maven:phantom-loader-958545:5015763")
+    implementation fg.deobf("curse.maven:phantom-loader-958545:5026345")
+    annotationProcessor fg.deobf("curse.maven:phantom-loader-958545:5026345")
     annotationProcessor "io.github.phantomloader:processor-forge:${phantomVersion}"
     // Mixin annotation processor
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
