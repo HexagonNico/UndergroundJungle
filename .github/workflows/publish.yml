@@ -4,7 +4,7 @@ on:
     tags:
       - 'v*'
 jobs:
-  publish:
+  publishCurseForge:
     environment: production
     runs-on: ubuntu-latest
     steps:
@@ -15,7 +15,22 @@ jobs:
         with:
           distribution: oracle
           java-version: 17
-      - name: Publish CurseForge
+      - name: Publish
+        env:
+          CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
         run: ./gradlew publishCurseForge
-      - name: Publish Modrinth
+  publishModrinth:
+    environment: production
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: oracle
+          java-version: 17
+      - name: Publish
+        env:
+          MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
         run: ./gradlew modrinth
