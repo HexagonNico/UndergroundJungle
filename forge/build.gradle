@@ -21,14 +21,16 @@ base {
 minecraft {
     // Minecraft version
     mappings channel: 'official', version: minecraftVersion
+    copyIdeResources = true
     // Forge run configurations
     runs {
         client {
             workingDirectory project.file('../.minecraft')
             ideaModule "${rootProject.name}.${project.name}.main"
             mods {
-                "${modId}" {
+                modClientRun {
                     source sourceSets.main
+                    source project(":common").sourceSets.main
                 }
             }
         }
@@ -39,14 +41,15 @@ dependencies {
     // Minecraft forge dependency
     minecraft "net.minecraftforge:forge:${minecraftVersion}-${forgeVersion}"
     // Common module dependency
-    implementation project(':common')
+    compileOnly project(':common')
     // Phantom library dependency
-    implementation fg.deobf("curse.maven:phantom-loader-958545:5015763")
-    annotationProcessor fg.deobf("curse.maven:phantom-loader-958545:5015763")
+    implementation fg.deobf("curse.maven:phantom-loader-958545:5026337")
+    annotationProcessor fg.deobf("curse.maven:phantom-loader-958545:5026337")
     annotationProcessor "io.github.phantomloader:processor-forge:${phantomVersion}"
     // Mixin annotation processor
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
     // Optional TerraBlender dependency
+    // TODO: This should be compileOnly, but causes the build to fail for reasons I don't understand
     implementation fg.deobf("com.github.glitchfiend:TerraBlender-forge:${minecraftVersion}-${terraBlenderVersion}")
 }
 
@@ -82,9 +85,13 @@ processResources {
     from project(':common').sourceSets.main.resources
 }
 
-jar {
-    // Re-obfuscate the jar
-    finalizedBy 'reobfJar'
+// Re-obfuscate the jar
+jar.finalizedBy('reobfJar')
+
+sourceSets.each {
+    def dir = layout.buildDirectory.dir("sourcesSets/$it.name")
+    it.output.resourcesDir = dir
+    it.java.destinationDirectory = dir
 }
 
 var changelogFile = rootProject.file('changelog.md')

@@ -1,5 +1,6 @@
 package io.github.hexagonnico.undergroundjungle.blocks;
 
+import com.mojang.serialization.MapCodec;
 import io.github.hexagonnico.undergroundjungle.UndergroundJungle;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
@@ -16,6 +17,8 @@ import org.jetbrains.annotations.NotNull;
  */
 public class JungleVinesBlock extends GrowingPlantHeadBlock {
 
+    public static final MapCodec<JungleVinesBlock> CODEC = simpleCodec(JungleVinesBlock::new);
+
     /**
      * Constructs a jungle vines block.
      *
@@ -23,6 +26,11 @@ public class JungleVinesBlock extends GrowingPlantHeadBlock {
      */
     public JungleVinesBlock(Properties properties) {
         super(properties, Direction.DOWN, CaveVines.SHAPE, false, 0.1);
+    }
+
+    @Override
+    protected @NotNull MapCodec<? extends GrowingPlantHeadBlock> codec() {
+        return CODEC;
     }
 
     @Override

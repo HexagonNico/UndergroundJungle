@@ -1,9 +1,9 @@
-# Release 20.1.0
+# Release 20.3.0
 
 Main changes:
 
 * **Underground Jungle** now requires the [Phantom Library](https://github.com/PhantomLoader/PhantomLoader).
-* The version number now follows the convention `<minecraftMajor>.<minecraftMinor>.<modVersion>`. That means version `20.1.0` is the first version for Minecraft `1.20.1`.
+* The version number now follows the convention `<minecraftMajor>.<minecraftMinor>.<modVersion>`. That means version `20.3.0` is the first version for Minecraft `1.20.3`.
 
 Additions:
 
@@ -12,3 +12,4 @@ Additions:
 Fixes:
 
 * Fixed the biome generating on the surface when TerraBlender is installed (for real this time... I hope)
+* Fixed crashes in versions past 1.20.2

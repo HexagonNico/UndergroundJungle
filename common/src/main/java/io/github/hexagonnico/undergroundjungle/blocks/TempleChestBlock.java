@@ -1,5 +1,6 @@
 package io.github.hexagonnico.undergroundjungle.blocks;
 
+import com.mojang.serialization.MapCodec;
 import io.github.hexagonnico.undergroundjungle.UndergroundJungle;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -37,6 +38,8 @@ import org.jetbrains.annotations.Nullable;
  */
 public class TempleChestBlock extends AbstractChestBlock<TempleChestBlockEntity> implements SimpleWaterloggedBlock {
 
+    public static final MapCodec<TempleChestBlock> CODEC = simpleCodec(TempleChestBlock::new);
+
     /** Chest shape */
     private static final VoxelShape SHAPE = Block.box(1.0, 0.0, 1.0, 15.0, 14.0, 15.0);
 
@@ -49,6 +52,11 @@ public class TempleChestBlock extends AbstractChestBlock<TempleChestBlockEntity>
     public TempleChestBlock(Properties properties) {
         super(properties, () -> UndergroundJungle.TEMPLE_CHEST_ENTITY.get());
         this.registerDefaultState(this.getStateDefinition().any().setValue(HorizontalDirectionalBlock.FACING, Direction.NORTH).setValue(BlockStateProperties.WATERLOGGED, false));
+    }
+
+    @Override
+    protected @NotNull MapCodec<? extends AbstractChestBlock<TempleChestBlockEntity>> codec() {
+        return CODEC;
     }
 
     @Override

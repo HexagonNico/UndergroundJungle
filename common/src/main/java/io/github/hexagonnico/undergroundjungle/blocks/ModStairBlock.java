@@ -18,6 +18,6 @@ public class ModStairBlock extends StairBlock {
      * @param referenceBlock Base block for stairs
      */
     public ModStairBlock(Block referenceBlock) {
-        super(referenceBlock.defaultBlockState(), BlockBehaviour.Properties.copy(referenceBlock));
+        super(referenceBlock.defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(referenceBlock));
     }
 }

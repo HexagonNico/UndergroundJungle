@@ -1,5 +1,6 @@
 package io.github.hexagonnico.undergroundjungle.blocks;
 
+import com.mojang.serialization.MapCodec;
 import io.github.hexagonnico.undergroundjungle.UndergroundJungle;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -33,6 +34,8 @@ import java.util.function.ToIntFunction;
  * @author Nico
  */
 public class JungleVinesPlantBlock extends GrowingPlantBodyBlock {
+
+    public static final MapCodec<JungleVinesPlantBlock> CODEC = simpleCodec(JungleVinesPlantBlock::new);
 
     /** Spores block state property */
     private static final BooleanProperty SPORES = BooleanProperty.create("spores");
@@ -79,6 +82,11 @@ public class JungleVinesPlantBlock extends GrowingPlantBodyBlock {
      */
     public static ToIntFunction<BlockState> lightLevel(int max) {
         return state -> state.getValue(SPORES) ? max : 0;
+    }
+
+    @Override
+    protected @NotNull MapCodec<? extends GrowingPlantBodyBlock> codec() {
+        return CODEC;
     }
 
     @Override

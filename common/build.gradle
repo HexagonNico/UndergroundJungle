@@ -14,5 +14,5 @@ dependencies {
     // Phantom library dependency
     implementation "io.github.phantomloader:library-common:${phantomVersion}"
     // Optional TerraBlender dependency
-    implementation "com.github.glitchfiend:TerraBlender-common:${minecraftVersion}-${terraBlenderVersion}"
+    compileOnly "com.github.glitchfiend:TerraBlender-common:${minecraftVersion}-${terraBlenderVersion}"
 }
