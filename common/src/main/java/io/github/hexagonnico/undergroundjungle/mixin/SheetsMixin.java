@@ -23,7 +23,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class SheetsMixin {
 
     /** Temple chest texture location */
-    private static final Material CHEST_MATERIAL = new Material(Sheets.CHEST_SHEET, new ResourceLocation(UndergroundJungle.modId(), "entity/chest/temple"));
+    private static final Material CHEST_MATERIAL = new Material(Sheets.CHEST_SHEET, new ResourceLocation(UndergroundJungle.MOD_ID, "entity/chest/temple"));
 
     /**
      * Returns {@link SheetsMixin#CHEST_MATERIAL} if the given block entity is a {@link TempleChestBlockEntity}.

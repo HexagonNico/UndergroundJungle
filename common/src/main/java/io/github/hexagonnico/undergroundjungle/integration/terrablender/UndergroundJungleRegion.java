@@ -16,10 +16,10 @@ import java.util.function.Consumer;
 
 public class UndergroundJungleRegion extends Region {
 
-    private static final ResourceKey<Biome> UNDERGROUND_JUNGLE_BIOME = ResourceKey.create(Registries.BIOME, new ResourceLocation(UndergroundJungle.modId(), "underground_jungle"));
+    private static final ResourceKey<Biome> UNDERGROUND_JUNGLE_BIOME = ResourceKey.create(Registries.BIOME, new ResourceLocation(UndergroundJungle.MOD_ID, "underground_jungle"));
 
     public UndergroundJungleRegion() {
-        super(new ResourceLocation(UndergroundJungle.modId(), "region"), RegionType.OVERWORLD, 1);
+        super(new ResourceLocation(UndergroundJungle.MOD_ID, "region"), RegionType.OVERWORLD, 1);
     }
 
     @Override

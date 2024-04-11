@@ -1,8 +1,8 @@
 package io.github.hexagonnico.undergroundjungle.mixin;
 
 import com.mojang.datafixers.util.Pair;
+import io.github.hexagonnico.undergroundjungle.PlatformHelper;
 import io.github.hexagonnico.undergroundjungle.UndergroundJungle;
-import io.github.phantomloader.library.platform.PlatformHelper;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -42,7 +42,7 @@ public class OverworldBiomeBuilderMixin {
     @Inject(at = @At("RETURN"), method = "addUndergroundBiomes")
     public void addUndergroundBiomes(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> consumer, CallbackInfo ci) {
         if(!PlatformHelper.isModLoaded("terrablender")) {
-            ResourceKey<Biome> undergroundJungleKey = ResourceKey.create(Registries.BIOME, new ResourceLocation(UndergroundJungle.modId(), "underground_jungle"));
+            ResourceKey<Biome> undergroundJungleKey = ResourceKey.create(Registries.BIOME, new ResourceLocation(UndergroundJungle.MOD_ID, "underground_jungle"));
             Climate.ParameterPoint undergroundJungleClimate = Climate.parameters(TEMPERATURE, HUMIDITY, CONTINENTALNESS, EROSION, DEPTH, WEIRDNESS, 0.0f);
             consumer.accept(Pair.of(undergroundJungleClimate, undergroundJungleKey));
         }

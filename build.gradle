@@ -2,20 +2,14 @@ subprojects {
     apply plugin: 'java'
 
     // Group id and mod version
-    group = modGroupId
-    version = modVersion
+    group = mod_group_id
+    version = mod_version
 
     // Mojang ships Java 17 to end users in 1.18+
     java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
     // Repositories for subprojects
     repositories {
-        // Needed by Phantom Loader
-        mavenCentral()
-        maven {
-            name = 'CurseMaven'
-            url = 'https://cursemaven.com'
-        }
         // Needed by TerraBlender
         maven {
             name = 'MinecraftForge'
@@ -36,5 +30,41 @@ subprojects {
                     "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
             ])
         }
+    }
+
+    // Replace in files
+    processResources {
+        def replaceProperties = [
+            "mod_version": mod_version,
+            "minecraft_version": minecraft_version,
+            "forge_version": forge_version,
+            "loader_version_range": loader_version_range,
+            "forge_version_range": forge_version_range,
+            "minecraft_version_range": minecraft_version_range,
+            "fabric_version": fabric_version,
+            "fabric_loader_version": fabric_loader_version,
+            "mod_name": mod_name,
+            "mod_authors": mod_authors,
+            "mod_id": mod_id,
+            "mod_license": mod_license,
+            "mod_description": mod_description,
+            "mod_sources": mod_sources,
+            "mod_home_page": mod_home_page
+        ]
+        inputs.properties(replaceProperties)
+        filesMatching(['pack.mcmeta', 'fabric.mod.json', 'META-INF/mods.toml']) {
+            expand replaceProperties
+        }
+    }
+
+    // Configure line endings
+    tasks.withType(JavaCompile).configureEach {
+        it.options.encoding = 'UTF-8'
+        it.options.getRelease().set(17)
+    }
+
+    // Disables Gradle's custom module metadata from being published to maven.
+    tasks.withType(GenerateModuleMetadata).configureEach {
+        enabled = false
     }
 }

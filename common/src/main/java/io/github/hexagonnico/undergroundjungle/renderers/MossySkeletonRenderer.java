@@ -16,7 +16,7 @@ import org.jetbrains.annotations.NotNull;
 public class MossySkeletonRenderer extends SkeletonRenderer {
 
     /** Location pointing to the mossy skeleton texture */
-    private static final ResourceLocation TEXTURE_LOCATION = new ResourceLocation(UndergroundJungle.modId(), "textures/entity/mossy_skeleton.png");
+    private static final ResourceLocation TEXTURE_LOCATION = new ResourceLocation(UndergroundJungle.MOD_ID, "textures/entity/mossy_skeleton.png");
 
     /**
      * Constructs the renderer.

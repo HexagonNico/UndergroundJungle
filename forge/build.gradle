@@ -1,8 +1,10 @@
 import net.darkhax.curseforgegradle.TaskPublishCurseForge
 
 plugins {
-    // Idea plugin
+    // Required by Forge
+    id 'eclipse'
     id 'idea'
+    id 'maven-publish'
     // Forge gradle plugin
     id 'net.minecraftforge.gradle' version '[6.0,6.2)'
     // Mixin plugin
@@ -13,14 +15,16 @@ plugins {
     id "com.modrinth.minotaur" version "2.+"
 }
 
+// Archive name for the forge mod
 base {
-    // Archive name for the forge mod
     archivesName = 'underground-jungle-forge'
 }
 
+// Minecraft configuration
 minecraft {
-    // Minecraft version
-    mappings channel: 'official', version: minecraftVersion
+    // Use official mappings
+    mappings channel: 'official', version: minecraft_version
+    // Required by Forge MDK
     copyIdeResources = true
     // Forge run configurations
     runs {
@@ -39,49 +43,31 @@ minecraft {
 
 dependencies {
     // Minecraft forge dependency
-    minecraft "net.minecraftforge:forge:${minecraftVersion}-${forgeVersion}"
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     // Common module dependency
-    compileOnly project(':common')
-    // Phantom library dependency
-    implementation fg.deobf("curse.maven:phantom-loader-958545:5026337")
-    annotationProcessor fg.deobf("curse.maven:phantom-loader-958545:5026337")
-    annotationProcessor "io.github.phantomloader:processor-forge:${phantomVersion}"
+    implementation project(':common')
     // Mixin annotation processor
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
     // Optional TerraBlender dependency
-    // TODO: This should be compileOnly, but causes the build to fail for reasons I don't understand
-    implementation fg.deobf("com.github.glitchfiend:TerraBlender-forge:${minecraftVersion}-${terraBlenderVersion}")
+    implementation fg.deobf("com.github.glitchfiend:TerraBlender-forge:${minecraft_version}-${terra_blender_version}")
 }
 
 mixin {
     // Specify mixin refmap
     add sourceSets.main, "mixin.undergroundjungle.refmap.json"
     // Common module mixin file
-    config modMixin
+    config 'mixin.undergroundjungle.json'
     // Forge module mixin file
     config 'mixin.undergroundjungle.forge.json'
 }
 
+// Copy sources from the common module
 tasks.withType(JavaCompile).configureEach {
-    // Copy sources from the common module
     source project(':common').sourceSets.main.allSource
-    // Pass options used by the annotation processor
-    options.compilerArgs.add "-AforgeVersion=${forgeVersion}"
-    options.compilerArgs.add "-AphantomVersion=${phantomVersion}"
-    options.compilerArgs.add "-AminecraftVersion=${minecraftVersion}"
-    options.compilerArgs.add "-AmodId=${modId}"
-    options.compilerArgs.add "-AmodGroupId=${modGroupId}"
-    options.compilerArgs.add "-AmodVersion=${modVersion}"
-    options.compilerArgs.add "-AmodName=${modName}"
-    options.compilerArgs.add "-AmodLicense=${modLicense}"
-    options.compilerArgs.add "-AmodAuthors=${modAuthors}"
-    options.compilerArgs.add "-AmodDescription=${modDescription}"
-    options.compilerArgs.add "-AmodSource=${modSource}"
-    options.compilerArgs.add "-AissueTracker=${issueTracker}"
 }
 
+// Copy resources from the common module
 processResources {
-    // Copy resources from the common module
     from project(':common').sourceSets.main.resources
 }
 
@@ -94,33 +80,32 @@ sourceSets.each {
     it.java.destinationDirectory = dir
 }
 
+// Read the changelog file
 var changelogFile = rootProject.file('changelog.md')
 var changelogText = changelogFile.exists() ? changelogFile.text : ''
 
+// Publish to CurseForge
 tasks.register('publishCurseForge', TaskPublishCurseForge) {
     apiToken = System.getenv('CURSEFORGE_TOKEN')
     upload('918314', jar) {
         changelogType = 'markdown'
         changelog = changelogText
         releaseType = 'release'
-        displayName = modName + ' - ' + modVersion + ' Forge'
-        addRequirement 'phantom-loader'
-        addGameVersion minecraftVersion
+        displayName = mod_name + ' - ' + mod_version + ' Forge'
+        addGameVersion minecraft_version
         addModLoader 'Forge'
     }
 }
 
+// Publish to Modrinth
 modrinth {
     token = System.getenv('MODRINTH_TOKEN')
     projectId = 'underground-jungle'
-    versionNumber = modVersion
-    versionName = modName + ' - ' + modVersion + ' Forge'
+    versionNumber = mod_version
+    versionName = mod_name + ' - ' + mod_version + ' Forge'
     versionType = 'release'
     uploadFile = jar
-    gameVersions = [minecraftVersion]
+    gameVersions = [minecraft_version]
     loaders = ['forge']
     changelog = changelogText
-    dependencies {
-        required.project 'phantom-loader'
-    }
 }

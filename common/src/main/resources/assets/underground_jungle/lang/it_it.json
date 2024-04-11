@@ -24,5 +24,10 @@
   "item.underground_jungle.mossy_skeleton_spawn_egg": "Uovo generatore di scheletro muschioso",
   "item.underground_jungle.jungle_zombie_spawn_egg": "Uovo generatore di zombie della giungla",
   "entity.underground_jungle.mossy_skeleton": "Scheletro muschioso",
-  "entity.underground_jungle.jungle_zombie": "Zombie della giungla"
+  "entity.underground_jungle.jungle_zombie": "Zombie della giungla",
+  "item.underground_jungle.axe_of_regrowth": "Ascia della ricrescita",
+  "item.underground_jungle.jungle_spores": "Spore della giungla",
+  "description.underground_jungle.axe_of_regrowth": "Ripianta gli alberi quando vengono abbattuti",
+  "item.underground_jungle.blade_of_the_jungle": "Lama della giungla",
+  "description.underground_jungle.blade_of_the_jungle": "Ha una piccola probabilità di infliggere veleno"
 }

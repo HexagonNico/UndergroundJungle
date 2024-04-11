@@ -1,16 +1,16 @@
 package io.github.hexagonnico.undergroundjungle.integration;
 
-import io.github.phantomloader.library.ModEntryPoint;
-import io.github.phantomloader.library.integration.FabricCustomEntryPoint;
-import io.github.phantomloader.library.platform.PlatformHelper;
+import com.mojang.logging.LogUtils;
+import io.github.hexagonnico.undergroundjungle.PlatformHelper;
+import org.slf4j.Logger;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class IntegrationHelper {
 
-    @ModEntryPoint(side = ModEntryPoint.Side.COMMON)
-    @FabricCustomEntryPoint(name = "terrablender", interfaceName = "terrablender.api.TerraBlenderApi")
+    private static final Logger LOGGER = LogUtils.getLogger();
+
     @SuppressWarnings("JavaReflectionInvocation")
     public static void addTerraBlenderRegions() {
         if(PlatformHelper.isModLoaded("terrablender")) try {
@@ -19,7 +19,7 @@ public class IntegrationHelper {
             Object regionInstance = Class.forName("io.github.hexagonnico.undergroundjungle.integration.terrablender.UndergroundJungleRegion").getConstructor().newInstance();
             registerMethod.invoke(null, regionInstance);
         } catch (IllegalAccessException | InstantiationException | NoSuchMethodException | ClassNotFoundException | InvocationTargetException e) {
-            throw new RuntimeException(e);
+            LOGGER.error("Error with TerraBlender integration", e);
         }
     }
 }
