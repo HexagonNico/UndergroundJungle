@@ -93,7 +93,7 @@ public class MudGrassBlock extends Block implements BonemealableBlock {
     }
 
     @Override
-    public boolean isValidBonemealTarget(LevelReader world, BlockPos pos, @NotNull BlockState state, boolean bool) {
+    public boolean isValidBonemealTarget(LevelReader world, BlockPos pos, @NotNull BlockState state) {
         return world.getBlockState(pos.above()).isAir();
     }
 
