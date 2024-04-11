@@ -40,7 +40,7 @@ public class MudGrassBlock extends Block implements BonemealableBlock {
      */
     public MudGrassBlock(Properties properties) {
         super(properties);
-        this.bonemealFeature = ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(UndergroundJungle.modId(), "jungle_vegetation"));
+        this.bonemealFeature = ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(UndergroundJungle.MOD_ID, "jungle_vegetation"));
     }
 
     @Override

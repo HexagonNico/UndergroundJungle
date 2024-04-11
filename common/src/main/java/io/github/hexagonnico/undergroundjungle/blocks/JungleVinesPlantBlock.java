@@ -13,6 +13,7 @@ import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CaveVines;
@@ -66,6 +67,9 @@ public class JungleVinesPlantBlock extends GrowingPlantBodyBlock {
             state = state.setValue(SPORES, false);
             world.setBlock(pos, state, 2);
             world.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, state));
+            if(world.getRandom().nextBoolean()) {
+                Block.popResource(world, pos, new ItemStack(UndergroundJungle.JUNGLE_SPORES.get(), 1));
+            }
             return InteractionResult.sidedSuccess(world.isClientSide());
         }
         return InteractionResult.PASS;

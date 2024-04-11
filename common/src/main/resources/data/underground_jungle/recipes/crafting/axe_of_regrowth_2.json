@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "X": {
+      "item": "underground_jungle:temple_axe"
+    },
+    "B": {
+      "item": "underground_jungle:jungle_vines"
+    },
+    "A": {
+      "item": "underground_jungle:jungle_spores"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "BXB",
+    "ABA"
+  ],
+  "result": {
+    "item": "underground_jungle:axe_of_regrowth"
+  },
+  "group": "axe_of_regrowth",
+  "show_notification": true
+}

@@ -26,9 +26,9 @@ Curseforge: https://www.curseforge.com/minecraft/mc-mods/underground-jungle
 
 Modrinth: https://modrinth.com/mod/underground-jungle
 
-### Additional information
+If you find this mod on other distribution platforms, these are NOT managed by me.
 
-Versions past 19.x require the [Phantom Library](https://github.com/PhantomLoader/PhantomLoader)
+### Additional information
 
 The Fabric version of this mod requires the [Fabric API](https://github.com/FabricMC)
 
@@ -36,11 +36,21 @@ The Fabric version of this mod requires the [Fabric API](https://github.com/Fabr
 
 Mod Author: [HexagonNico](https://github.com/HexagonNico)
 
-Chiseled Temple Bricks texture by [Matriax](https://opengameart.org/content/inca-tileset)
+Chiseled Temple Bricks texture by [Matriax](https://opengameart.org/content/inca-tileset) (CC-0)
 
 ### Check out my other mods
 
 * [Spider Caves](https://github.com/HexagonNico/SpiderCaves): Adds a spider cave biome and a spider armor
+
+## Questions and answers
+
+**Q**: Can I use this in my modpack?
+
+**A**: Yes. You don't need to ask for permission. See [License](#license) for details.
+
+**Q**: Can you port this mod to 1.XX.X?
+
+**A**: I can, but remember that I'm a human being and porting the mod to another version requires additional effort to maintain each version. Please refrain from opening issues like "Port to 1.3.2 when".
 
 ## License
 
@@ -55,3 +65,10 @@ other creations made within Minecraft, as long as you respect the following cond
 
 You are free to use this mod in any modpack, as long as you do not sell it via any means.
 You cannot re-upload this mod on other mod distribution platforms.
+
+## Support
+
+If you like this mod, consider supporting the project with a donation via [PayPal](https://paypal.me/hexagonnico) or [Ko-fi](https://ko-fi.com/HexagonNico) page.
+
+I'm also a game developer currently working on a Zelda-inspired game about discovering the remains of an ancient civilization.
+You can wishlist the game on Steam: [Ancient Mind on Steam](https://store.steampowered.com/app/2376750/Ancient_Mind/)

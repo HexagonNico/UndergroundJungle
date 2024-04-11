@@ -5,14 +5,12 @@ plugins {
 
 minecraft {
     // Minecraft dependency
-    version minecraftVersion
+    version minecraft_version
 }
 
 dependencies {
     // Mixin dependency
     compileOnly 'org.spongepowered:mixin:0.8.5'
-    // Phantom library dependency
-    implementation "io.github.phantomloader:library-common:${phantomVersion}"
     // Optional TerraBlender dependency
-    implementation "com.github.glitchfiend:TerraBlender-common:${minecraftVersion}-${terraBlenderVersion}"
+    compileOnly "com.github.glitchfiend:TerraBlender-common:${minecraft_version}-${terra_blender_version}"
 }

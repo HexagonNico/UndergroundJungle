@@ -1,18 +1,20 @@
 import net.darkhax.curseforgegradle.TaskPublishCurseForge
 
 plugins {
-    // Idea plugin
+    // Required by Fabric loom
+    id 'java'
     id 'idea'
+    id 'maven-publish'
     // Fabric plugin
-    id 'fabric-loom' version '1.2-SNAPSHOT'
+    id 'fabric-loom' version '1.6-SNAPSHOT'
     // CurseForge publishing
     id 'net.darkhax.curseforgegradle' version '1.1.15'
     // Modrinth publishing
     id "com.modrinth.minotaur" version "2.+"
 }
 
+// Archive name for the fabric mod
 base {
-    // Archive name for the fabric mod
     archivesName = 'underground-jungle-fabric'
 }
 
@@ -29,86 +31,61 @@ loom {
             runDir('../.minecraft')
         }
     }
-    // Add the common module to the classpath to allow fabric to find resources
-    mods {
-        "${modId}" {
-            sourceSet sourceSets.main
-            sourceSet project(':common').sourceSets.main
-        }
-    }
 }
 
 dependencies {
     // Minecraft dependency
-    minecraft "com.mojang:minecraft:${minecraftVersion}"
+    minecraft "com.mojang:minecraft:${minecraft_version}"
     mappings loom.officialMojangMappings()
     // Fabric loader and api dependency
-    modImplementation "net.fabricmc:fabric-loader:${fabricVersion}"
-    modImplementation "net.fabricmc.fabric-api:fabric-api:${fabricApiVersion}+${minecraftVersion}"
+    modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}+${minecraft_version}"
     // Common module dependency
     implementation project(':common')
-    // Phantom library dependency
-    modImplementation "curse.maven:phantom-loader-958545:5026342"
-    annotationProcessor "curse.maven:phantom-loader-958545:5026342"
-    annotationProcessor "net.fabricmc:fabric-loader:${fabricVersion}"
-    annotationProcessor "io.github.phantomloader:processor-fabric:${phantomVersion}"
     // Optional TerraBlender dependency
-    modImplementation "com.github.glitchfiend:TerraBlender-fabric:${minecraftVersion}-${terraBlenderVersion}"
-    annotationProcessor "com.github.glitchfiend:TerraBlender-fabric:${minecraftVersion}-${terraBlenderVersion}"
+    modCompileOnly "com.github.glitchfiend:TerraBlender-fabric:${minecraft_version}-${terra_blender_version}"
 }
 
+// Copy sources from the common module
 tasks.withType(JavaCompile).configureEach {
-    // Copy sources from the common module
     source project(':common').sourceSets.main.allSource
-    // Pass options used by the annotation processor
-    options.compilerArgs.add "-AfabricVersion=${fabricVersion}"
-    options.compilerArgs.add "-AphantomVersion=${phantomVersion}"
-    options.compilerArgs.add "-AminecraftVersion=${minecraftVersion}"
-    options.compilerArgs.add "-AmodId=${modId}"
-    options.compilerArgs.add "-AmodGroupId=${modGroupId}"
-    options.compilerArgs.add "-AmodVersion=${modVersion}"
-    options.compilerArgs.add "-AmodName=${modName}"
-    options.compilerArgs.add "-AmodLicense=${modLicense}"
-    options.compilerArgs.add "-AmodVersion=${modVersion}"
-    options.compilerArgs.add "-AmodAuthors=${modAuthors}"
-    options.compilerArgs.add "-AmodDescription=${modDescription}"
-    options.compilerArgs.add "-AmodSource=${modSource}"
-    options.compilerArgs.add "-AmodMixin=${modMixin}"
 }
 
+// Copy resources from the common module
 processResources {
-    // Copy resources from the common module
     from project(':common').sourceSets.main.resources
 }
 
+// Read the changelog file
 var changelogFile = rootProject.file('changelog.md')
 var changelogText = changelogFile.exists() ? changelogFile.text : ''
 
+// Publish to CurseForge
 tasks.register('publishCurseForge', TaskPublishCurseForge) {
     apiToken = System.getenv('CURSEFORGE_TOKEN')
     upload('918314', jar) {
         changelogType = 'markdown'
         changelog = changelogText
         releaseType = 'release'
-        displayName = modName + ' - ' + modVersion + ' Fabric'
-        addRequirement 'phantom-loader'
+        displayName = mod_name + ' - ' + mod_version + ' Fabric'
+        addRequirement 'fabric-api'
         addModLoader 'Fabric'
-        addGameVersion minecraftVersion
+        addGameVersion minecraft_version
     }
 }
 
+// Publish to Modrinth
 modrinth {
     token = System.getenv('MODRINTH_TOKEN')
     projectId = 'underground-jungle'
-    versionNumber = modVersion
-    versionName = modName + ' - ' + modVersion + ' Fabric'
+    versionNumber = mod_version
+    versionName = mod_name + ' - ' + mod_version + ' Fabric'
     versionType = 'release'
     uploadFile = remapJar
-    gameVersions = [minecraftVersion]
+    gameVersions = [minecraft_version]
     loaders = ['fabric']
     changelog = changelogText
     dependencies {
-        required.project 'phantom-loader'
         required.project 'fabric-api'
     }
 }

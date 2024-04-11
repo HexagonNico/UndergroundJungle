@@ -15,6 +15,8 @@ public class ModToolTier implements Tier {
 
     /** Temple tools tier */
     public static final ModToolTier TEMPLE = new ModToolTier(256, 14.0f, 3.0f, 4, 20);
+    /** Special jungle tools tier */
+    public static final ModToolTier JUNGLE = new ModToolTier(128, 13.0f, 2.5f, 4, 12);
 
     /** Tool durability */
     private final int uses;

@@ -16,7 +16,7 @@ import org.jetbrains.annotations.NotNull;
 public class JungleZombieRenderer extends ZombieRenderer {
 
     /** Location pointing to the jungle zombie texture */
-    private static final ResourceLocation TEXTURE_LOCATION = new ResourceLocation(UndergroundJungle.modId(), "textures/entity/jungle_zombie.png");
+    private static final ResourceLocation TEXTURE_LOCATION = new ResourceLocation(UndergroundJungle.MOD_ID, "textures/entity/jungle_zombie.png");
 
     /**
      * Constructs the renderer.

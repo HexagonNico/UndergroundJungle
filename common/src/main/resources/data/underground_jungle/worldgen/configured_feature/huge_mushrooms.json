@@ -1,7 +1,7 @@
 {
   "type": "minecraft:random_selector",
   "config": {
-    "default": "minecraft:jungle_tree",
+    "default": "underground_jungle:jungle_tree_no_cocoa",
     "features": [
       {
         "chance": 0.4,
