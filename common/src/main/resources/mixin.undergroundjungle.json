@@ -5,8 +5,9 @@
   "minVersion": "0.8",
   "refmap": "mixin.undergroundjungle.refmap.json",
   "mixins": [
-    "OverworldBiomeBuilderMixin",
+    "BlockMixin",
     "ItemEntityMixin",
+    "OverworldBiomeBuilderMixin",
     "SheetsMixin"
   ],
   "client": [

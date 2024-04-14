@@ -47,6 +47,9 @@
     {
       "processor_type": "minecraft:protected_blocks",
       "value": "#minecraft:features_cannot_replace"
+    },
+    {
+      "processor_type": "underground_jungle:integration"
     }
   ]
 }

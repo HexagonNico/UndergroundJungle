@@ -28,7 +28,12 @@ Modrinth: https://modrinth.com/mod/underground-jungle
 
 If you find this mod on other distribution platforms, these are NOT managed by me.
 
-### Additional information
+### Cross compatibility
+
+* When [Woodworks](https://github.com/team-abnormals/woodworks) or [Quark](https://github.com/VazkiiMods/Quark) are installed, the chests in the temple will be replaced with jungle chests.
+* World generation compatible with [TerraBlender](https://github.com/Glitchfiend/TerraBlender) (not required).
+
+### Required dependencies
 
 The Fabric version of this mod requires the [Fabric API](https://github.com/FabricMC)
 
