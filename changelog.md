@@ -1,3 +1,11 @@
+# Release 19.4.2
+
+Changes:
+
+* Changed the texture of the Axe of Regrowth.
+* The Axe of Regrowth now replants saplings on the same block that was broken instead of the one below.
+* If [Woodworks](https://github.com/team-abnormals/woodworks) or [Quark](https://github.com/VazkiiMods/Quark) are installed, the chests in the temple will be replaced with jungle chests.
+
 # Release 19.4.1
 
 Main changes:

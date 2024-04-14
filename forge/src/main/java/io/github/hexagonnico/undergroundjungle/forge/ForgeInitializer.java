@@ -2,6 +2,7 @@ package io.github.hexagonnico.undergroundjungle.forge;
 
 import io.github.hexagonnico.undergroundjungle.UndergroundJungle;
 import io.github.hexagonnico.undergroundjungle.integration.IntegrationHelper;
+import io.github.hexagonnico.undergroundjungle.worldgen.IntegrationProcessor;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -19,6 +20,9 @@ public class ForgeInitializer {
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
-        event.enqueueWork(IntegrationHelper::addTerraBlenderRegions);
+        event.enqueueWork(() -> {
+            IntegrationHelper.addTerraBlenderRegions();
+            IntegrationProcessor.register();
+        });
     }
 }
