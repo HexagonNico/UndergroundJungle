@@ -1,3 +1,9 @@
+# Patch 20.3.3
+
+Fixes:
+
+* Fixed crash caused by the biome music
+
 # Release 20.3.2
 
 Changes:
