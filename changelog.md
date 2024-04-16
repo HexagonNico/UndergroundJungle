@@ -1,3 +1,9 @@
+# Release 20.2.2
+
+Fixes:
+
+* Fixed crash caused by the biome music
+
 # Release 20.2.1
 
 Changes:
