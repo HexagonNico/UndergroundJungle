@@ -3,6 +3,12 @@
 
 Underground Jungle is a mod that adds an underground jungle biome and an underground jungle temple.
 
+# This project has been moved
+
+**This mod is for Minecraft 1.19.4-1.20.3**
+
+**For versions from 1.21 onwards, see [Underground Worlds](https://codeberg.org/HexagonNico/UndergroundWorlds)**
+
 ## About
 
 Underground Jungle adds an underground jungle biome and an underground jungle temple inspired by the one in Terraria
